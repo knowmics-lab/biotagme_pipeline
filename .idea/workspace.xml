@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1bf3d847-e968-4f8e-9b4c-d3782b7c49f5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1bFjujO4EuQMzog7jHDqqLBfkGP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MainBioTAGMEr" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="MainBioTAGMEr" />
+      <module name="BioTagME_final" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainBioTAGMEr" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="BioTagME_final" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="biotagme_final [file:/home/antonio/Scrivania/BioTagME_final/]" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="BioTagME_final-build" />
+                <option name="path" value="$PROJECT_DIR$/project" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$" value="3176470110799" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="1649697062" />
+        <entry key="$PROJECT_DIR$/project/build.properties" value="2620759781" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1bf3d847-e968-4f8e-9b4c-d3782b7c49f5" name="Default Changelist" comment="" />
+      <created>1588234959346</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588234959346</updated>
+      <workItem from="1588234961470" duration="17686000" />
+      <workItem from="1588321996367" duration="14000" />
+      <workItem from="1588500930399" duration="18909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="416" y="124" width="532" height="487" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1588520830270">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="416" y="124" width="532" height="487" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.732@0.0.1366.732" timestamp="1588520830270" />
+    <state x="492" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1588260696236">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="492" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1588260696236" />
+    <state width="1320" height="80" key="GridCell.Tab.0.bottom" timestamp="1588525831270">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1320" height="80" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1588525831270" />
+    <state width="1320" height="80" key="GridCell.Tab.0.center" timestamp="1588525831270">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1320" height="80" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1588525831270" />
+    <state width="1320" height="80" key="GridCell.Tab.0.left" timestamp="1588525831270">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1320" height="80" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1588525831270" />
+    <state width="1320" height="80" key="GridCell.Tab.0.right" timestamp="1588525831270">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1320" height="80" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1588525831270" />
+    <state x="362" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1588500933423">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="362" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.732@0.0.1366.732" timestamp="1588500933423" />
+    <state x="346" y="53" width="672" height="678" key="search.everywhere.popup" timestamp="1588517952155">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="346" y="53" width="672" height="678" key="search.everywhere.popup/0.0.1366.732@0.0.1366.732" timestamp="1588517952155" />
+  </component>
+</project>
