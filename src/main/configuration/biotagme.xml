@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+    <tagme_info>
+        <description>
+            The tagme_info tag is used for setting all configuration parameter necessary to interact with the tagme
+            server.
+        </description>
+        <url>
+            <description>
+                The TagME URL related to annotation operation
+            </description>
+            <value>
+                https://tagme.d4science.org/tagme/tag
+            </value>
+        </url>
+        <url_rel>
+            <description>
+                The TagME URL related to relatedness computation
+            </description>
+            <value>
+                https://tagme.d4science.org/tagme/rel
+            </value>
+        </url_rel>
+        <token>
+            <description>
+                The D4Science Service Authorization Token. The user has to do a subscription to get it
+            </description>
+            <value>
+                528fb642-187a-4bdc-8b4d-2ca8cf98b62d
+            </value>
+        </token>
+        <language>
+            <description>
+                Tag used to specify in which language have been written the documents to annotate
+            </description>
+            <value>
+                en
+            </value>
+        </language>
+        <epsilon>
+            <description>
+                This parameter can be used to finely tune the disambiguation process. You browse the site
+                https://sobigdata.d4science.org/web/tagme/tagme-help to get more information
+            </description>
+            <value>
+                0.3
+            </value>
+        </epsilon>
+        <include_wikicategory>
+            <description>
+                Tag used to include within the response the categories list of the wikipedia pages.
+            </description>
+            <value>
+                true
+            </value>
+        </include_wikicategory>
+    </tagme_info>
+
+    <pubmed_parameters>
+        <url4pmids>
+            <description>
+                The url used to download a list of new pmid insert in the pubmed database
+            </description>
+            <value>
+                https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi
+            </value>
+        </url4pmids>
+        <retmax>
+            <description>
+                This is a parameter used to get the max number of pmids per query. I suggest you to increase the value
+                only if your driver machine has more then 8 GB of RAM. You have to know that if this value is high then
+                your driver will download many titles and abstract per query. So, it could cause an out of memory state.
+            </description>
+            <value>
+                5000
+            </value>
+        </retmax>
+        <retstart>
+            <description>
+                This is a parameter used to specify from which index of the vector will be start the download function
+            </description>
+            <value>
+                0
+            </value>
+        </retstart>
+        <url4abstract>
+            <description>
+                The url used to download the title and abstract of the new articles
+            </description>
+            <value>
+                https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi
+            </value>
+        </url4abstract>
+        <end_update_date>
+            <description>
+                Upper bound of the date range used to limit a search result by the date. The general
+                date format is YYYY/MM/DD, YYYY/MM or YYYY. If this field is set to 3000, it will specify
+                the today data.
+            </description>
+            <value>
+                2020/04/30
+            </value>
+        </end_update_date>
+    </pubmed_parameters>
+
+    <dt_hybrid_parameters>
+        <alpha>
+            <description>
+                The wid1 and wid2 degree will be raised to this value
+            </description>
+            <value>
+                0.5
+            </value>
+        </alpha>
+        <top>
+            <description>
+                We only consider the top n associations for each wid1. The default value is 1000
+            </description>
+            <value>
+                1000
+            </value>
+        </top>
+    </dt_hybrid_parameters>
+
+    <hdfs_paths>
+        <!-- path used during the updating operations -->
+        <newDocuments_path>
+            <descrizione>
+                The hdfs path in which are stored all the json files containing the new documents' abstract and title to
+                annotate
+            </descrizione>
+            <value>
+                /Articles_update
+            </value>
+        </newDocuments_path>
+        <!-- path used during the annotation of the whole documents dataset -->
+        <allDocuments_path>
+            <description>
+                The hdfs path in which are stored the json file containing all the Pubmed documents' title and abstract
+                until june 2017
+            </description>
+            <value>
+                /Article_jsonFormat
+            </value>
+        </allDocuments_path>
+        <!-- -->
+        <DocumentsAnnotations_path>
+            <description>
+                The hdfs path in which are stored the annotations related to the new documents downloaded from Pubmed
+            </description>
+            <value>
+                /Documents_Annotations
+            </value>
+        </DocumentsAnnotations_path>
+        <!-- -->
+        <categories_path>
+            <description>
+                The hdfs path in which are stored the parquet files containing all wikipedia biology categories.
+            </description>
+            <value>
+                /categories_biotgm
+            </value>
+        </categories_path>
+        <!-- -->
+        <pmids_wiki_ids_path>
+            <description>
+                The hdfs path in which are stored the association pmid-wid
+            </description>
+            <value>
+                /pmids_wiki_ids_path
+            </value>
+        </pmids_wiki_ids_path>
+        <!-- -->
+        <wiki_ids_spot_path>
+            <description>
+                The hdfs path in which are stored the association wid-spot
+            </description>
+            <value>
+                /wiki_ids_spot_path
+            </value>
+        </wiki_ids_spot_path>
+        <!-- -->
+        <w_matrix_path>
+            <description>
+                The hdfs path in which is stored the w_matrix (DT-Hybrid)
+            </description>
+            <value>
+                /w_matrix_path
+            </value>
+        </w_matrix_path>
+        <!-- -->
+        <wid1_wid2_path>
+            <description>
+                The hdfs path in which are stored the parquet files containing the widi-widj association. where widi and
+                widj are two wiki id of two different terms obtained during the annotation procedures
+            </description>
+            <value>
+                /widi_widj_association
+            </value>
+        </wid1_wid2_path>
+        <!-- -->
+        <tagme_relatedness>
+            <description>
+                The hdfs path in which is stored the relatedness between two wiki ids
+            </description>
+            <value>
+                /tagme_relatedness
+            </value>
+        </tagme_relatedness>
+        <!-- DISEASE PATHS -->
+        <disgenet_path>
+            <description>
+                The hdfs path in which is stored the disgenet tsv file containing diseases information
+            </description>
+            <value>
+                /DISEASE/DISGENET
+            </value>
+        </disgenet_path>
+        <kegg_dis_path>
+            <description>
+                The hdfs path in which is stored the kegg csv file containing diseases information
+            </description>
+            <value>
+                /DISEASE/KEGG
+            </value>
+        </kegg_dis_path>
+        <civic_dis_path>
+            <description>
+                The hdfs path in which is stored the civic json file containing diseases information
+            </description>
+            <value>
+                /DISEASE/CIVIC
+            </value>
+        </civic_dis_path>
+        <!-- DRUG PATHS-->
+        <drugbank_path>
+            <description>
+                The hdfs path in which is stored the drugbanck csv file containing drugs information
+            </description>
+            <value>
+                /DRUG/DRUGBANCK
+            </value>
+        </drugbank_path>
+        <kegg_drg_path>
+            <description>
+                The hdfs path in which is stored the kegg csv file containing drugs information
+            </description>
+            <value>
+                /DRUG/KEGG
+            </value>
+        </kegg_drg_path>
+        <pharmkb_path>
+            <description>
+                The hdfs path in which is stored the pharmkb csv file containing drugs information
+            </description>
+            <value>
+                /DRUG/PHARMKB
+            </value>
+        </pharmkb_path>
+        <!-- GENE PATHS -->
+        <hgnc_path>
+            <description>
+                The hdfs path in which is stored the hgnc txt file containing genes information
+            </description>
+            <value>
+                /GENE/HGNC
+            </value>
+        </hgnc_path>
+        <!-- miRNA PATHS -->
+        <mirna_path>
+            <description>
+                The hdfs path in which is stored the mirna txt file containing miRNA information
+            </description>
+            <value>
+                /miRNA/miRNA
+            </value>
+        </mirna_path>
+        <mirna_mat_path>
+            <description>
+                The hdfs path in which is stored the mirna_mature txt file containing miRNA information
+            </description>
+            <value>
+                /miRNA/miRNA_MATURE
+            </value>
+        </mirna_mat_path>
+        <!-- PROTEIN -->
+        <string_path>
+            <description>
+                The hdfs path in which is stored the aliases, names of the protein as well as the file containing the whole string network
+            </description>
+            <value>
+                /PROTEIN/STRING
+            </value>
+        </string_path>
+        <string_species>
+            <description>
+
+            </description>
+            <value>
+                9606
+            </value>
+        </string_species>
+        <!-- GO -->
+        <go_path>
+            <description>
+                The hdfs path in which is stored the go obo file containing ontology information
+            </description>
+            <value>
+                /ONTOLOGY/GO
+            </value>
+        </go_path>
+        <!-- ENZYME -->
+        <enzyme_path>
+            <description>
+                The hdfs path in which is stored the csv file containing enzyme information
+            </description>
+            <value>
+                /ENZYME/KEGG
+            </value>
+        </enzyme_path>
+        <!-- DGROUP -->
+        <dgroup_path>
+            <description>
+                The hdfs path in which is stored the csv file containing dgroup information
+            </description>
+            <value>
+                /DGROUP/KEGG
+            </value>
+        </dgroup_path>
+        <!-- LNC -->
+        <lnc_path>
+            <description>
+                The hdfs path in which is stored the csv file containing lnc information
+            </description>
+            <value>
+                /LNC/LNCIPEDIA
+            </value>
+        </lnc_path>
+        <!-- NETWORKS DATA -->
+        <network_data>
+            <description>
+                The hdfs path in which will be stored the network data
+            </description>
+            <value>
+                /NETWORK_DATA
+            </value>
+        </network_data>
+    </hdfs_paths>
+
+
+</configuration>

@@ -2,13 +2,13 @@ package Annotation_Module
 
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.spark.sql.SparkSession
-
 import scala.xml.Elem
 import AnnotationUtils._
 import org.apache.spark.sql.functions._
 
 
 object AnnotationProcedure extends AnnotationTrait {
+
   /**
    * Main function to Annotation procedure:
    *   - The first "select" operation generate a DataFrame where the title and abstract columns have been
@@ -28,14 +28,13 @@ object AnnotationProcedure extends AnnotationTrait {
       val documents_path = if(option == 0) parameters_map("newDocuments_path") else parameters_map("allDocuments_path")
 
       // spark DataFrame and variables
-      val parameters_br  = spark.sparkContext.broadcast(parameters_map)
-      val new_abst       = spark.read.json(documents_path + "/*.json")
+      val new_abst   = spark.read.json(documents_path + "/*.json")
 
       // procedure
       new_abst.repartition(getNumPartition(new_abst, spark),$"PMID")
          .select($"PMID", concat($"title", lit("\n"), $"Abstract").as("Text"))
          .select($"PMID",
-              explode(sendAnnotationRequest(lit(parameters_br), $"Text", $"PMID").getItem("annotations")).as("An")
+              explode(sendAnnotationRequest(typedLit(parameters_map), $"Text", $"PMID").getItem("annotations")).as("An")
          ).filter($"An.title".isNotNull)
          .select($"PMID",
               when_other($"An.spot",0).as("spot"),

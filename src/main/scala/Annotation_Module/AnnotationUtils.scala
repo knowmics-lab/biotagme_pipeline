@@ -2,7 +2,6 @@ package Annotation_Module
 
 import java.util
 import java.io.IOException
-
 import org.apache.log4j.Logger
 import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 import org.apache.spark.sql.functions._
@@ -13,7 +12,7 @@ import org.apache.http.client.methods.HttpPost
 import org.apache.http.impl.client.{CloseableHttpClient, HttpClientBuilder, StandardHttpRequestRetryHandler}
 import org.apache.http.message.BasicNameValuePair
 import org.apache.http.util.EntityUtils
-import org.apache.spark.broadcast.Broadcast
+import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 
@@ -28,9 +27,9 @@ object AnnotationUtils {
    * Since the parquet file only support the utf8 format, a transformation from string to array of bites
    * is necessary to avoid data format exception
    **/
-  val arrayString2arrayBytes  = udf((str_vet: Seq[String])   =>  str_vet.map(str => str.getBytes()))
-  val arrayBytes2String       = udf((arrayByte:Array[Byte])  =>  new String(arrayByte))
-  val string2arrayByte_udf    = udf((str:String)             =>  str.getBytes)
+  val arrayString2arrayBytes: UserDefinedFunction = udf((str_vet: Seq[String])   =>  str_vet.map(str => str.getBytes()))
+  val arrayBytes2String: UserDefinedFunction      = udf((arrayByte:Array[Byte])  =>  new String(arrayByte))
+  val string2arrayByte_udf: UserDefinedFunction   = udf((str:String)             =>  str.getBytes)
 
   def when_other(_col: Column, opt:Int) = {
       when(_col.isNull, null).otherwise(
@@ -62,7 +61,7 @@ object AnnotationUtils {
            case 'g' => scala.math.pow(10,9)
        }
        // final equation
-       scala.math.round(tot_bytes/(executor_mem.dropRight(1).toDouble * molt_factor * total_cores)).toInt * total_cores
+       scala.math.ceil(tot_bytes/(executor_mem.dropRight(1).toDouble * molt_factor * total_cores)).toInt * total_cores
    }
 
   /**
@@ -74,9 +73,9 @@ object AnnotationUtils {
    * congestion or failure. Since the returned annotations are in a json format, the json4s api have been used to
    * do a json-scala object transformation.
    **/
-   val sendAnnotationRequest = udf((params: Broadcast[Map[String,String]], text: String, pmid:Long) => {
-       val tagme_config = params.value
+   val sendAnnotationRequest: UserDefinedFunction = udf((parameters:Map[String,String], text: String, pmid:Long) => {
        val logger       = Logger.getLogger("Annotation procedure")
+       val tagme_config = parameters
        // HTTP request body configuration
        val entityPost = new util.ArrayList[NameValuePair]
        entityPost.add(new BasicNameValuePair("gcube-token",tagme_config("token")))

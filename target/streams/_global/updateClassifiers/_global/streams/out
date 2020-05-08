@@ -1,4 +1,4 @@
 [debug] "not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/home/antonio/Scrivania/BioTagME_final/"), "biotagme_final")...
-[debug] Done updating ProjectRef(uri("file:/home/antonio/Scrivania/BioTagME_final/"), "biotagme_final")
+[debug] Updating ProjectRef(uri("file:/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/"), "biotagme_pipeline")...
+[debug] Done updating ProjectRef(uri("file:/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/"), "biotagme_pipeline")
 [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.

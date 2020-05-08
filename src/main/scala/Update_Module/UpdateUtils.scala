@@ -25,8 +25,14 @@ object UpdateUtils {
           if (parsed_articles.isSuccessful) {
               articles_list = parsed_articles.toOption.get.articles.map(article => {
                   val article_data = Article_final(article.PMID.toLong, "", "")
-                  article.ArticleTitle match {case Some(text) => article_data.Title = text}
-                  article.AbstractText match {case Some(text_lst) => article_data.Abstract = text_lst.mkString(" ")}
+                  article.ArticleTitle match {
+                      case Some(text) => article_data.Title = text
+                      case _          => null
+                  }
+                  article.AbstractText match {
+                      case Some(text_lst) => article_data.Abstract = text_lst.mkString(" ")
+                      case _          => null
+                  }
                   article_data
               })
           }
@@ -46,20 +52,20 @@ object UpdateUtils {
    *   - 0: download the pmids list that occur into a used defined temporal interval [mindate, maxdate]
    *   - 1: download document's title and abstract
    **/
-  def Pubmed_request(opt:Int, map_inf: Map[String,String], param: String, start_data:String = ""): String = {
+  def Pubmed_request(opt:Int, map_inf: Map[String,String], param: String): String = {
       var http_response: CloseableHttpResponse = null
       val http_client = HttpClientBuilder.create.build
       val http_post   = new HttpPost(if(opt==0) map_inf("url4pmids") else map_inf("url4abstract"))
       var content     = ""
-      val logger      = Logger.getLogger("PubMed_equest logger")
+      val logger      = Logger.getLogger("PubMed_request logger")
       val entityPost  = new util.ArrayList[NameValuePair]
 
       try {
           entityPost.add(new BasicNameValuePair("db", "pubmed"))
           entityPost.add(new BasicNameValuePair("retmode", if(opt==0) "json" else "xml"))
           if (opt == 0) {
-             entityPost.add(new BasicNameValuePair("mindate",  start_data))
-             entityPost.add(new BasicNameValuePair("maxdate",  map_inf("end_update_data")))
+             entityPost.add(new BasicNameValuePair("mindate",  map_inf("last_update_date")))
+             entityPost.add(new BasicNameValuePair("maxdate",  map_inf("end_update_date")))
              entityPost.add(new BasicNameValuePair("retmax" ,  map_inf("retmax")))
              entityPost.add(new BasicNameValuePair("retstart", param))
           }
@@ -85,8 +91,8 @@ object UpdateUtils {
       }
       catch{
           case ioe:IOException         => logger.error(ioe.getClass.toString  + " => " + ioe.getMessage)
-          case pre: ProtocolException  => logger.error(pre.getClass.toString + " => " + pre.getMessage)
-          case hte: HttpException      => logger.error(hte.getClass.toString + " => " + hte.getMessage)
+          case pre: ProtocolException  => logger.error(pre.getClass.toString + "  => " + pre.getMessage)
+          case hte: HttpException      => logger.error(hte.getClass.toString + "  => " + hte.getMessage)
           case e:Exception             => logger.error("Generic: " + e.getClass.toString + " => " + e.getMessage)
       }
 

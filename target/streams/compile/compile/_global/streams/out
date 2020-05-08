@@ -1,0 +1,9 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/src/main/scala/Update_Module/UpdateUtils.scala:28:27: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  article.ArticleTitle match {case Some(text) => article_data.Title = text}[0m
+[0m[[0m[33mwarn[0m] [0m[0m                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/src/main/scala/Update_Module/UpdateUtils.scala:29:27: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  article.AbstractText match {case Some(text_lst) => article_data.Abstract = text_lst.mkString(" ")}[0m
+[0m[[0m[33mwarn[0m] [0m[0m                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
