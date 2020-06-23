@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu May 21 17:21:04 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0172-37d2-d680-00002c1cac78 
+on database directory /home/antonio/Scrivania/BioTagME_final/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@410ef2ed 
+Loaded from file:/usr/local/spark-2.4.5/jars/derby-10.12.1.1.jar
+java.vendor=Private Build
+java.runtime.version=1.8.0_252-8u252-b09-1~19.10-b09
+user.dir=/home/antonio/Scrivania/BioTagME_final
+os.name=Linux
+os.arch=amd64
+os.version=5.3.0-51-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

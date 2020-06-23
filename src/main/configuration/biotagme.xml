@@ -120,7 +120,7 @@
                 We only consider the top n associations for each wid1. The default value is 1000
             </description>
             <value>
-                1000
+                500
             </value>
         </top>
     </dt_hybrid_parameters>

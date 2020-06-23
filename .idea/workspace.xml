@@ -1,327 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="972d8136-aa8f-4ea3-84d2-2f496d9a30b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__commons_beanutils_commons_beanutils_core_1_8_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_column_1_10_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_encoding_1_10_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_hadoop_1_10_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_jackson_1_10_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_catalyst_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_core_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_kvstore_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_launcher_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sketch_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sql_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_tags_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_unsafe_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_RoaringBitmap_0_5_11_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_7_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/configuration/biotagme.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/configuration/last_update.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateProcedure.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateTrait.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_core_1_5_5_nohive_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_core_1_5_2_nohive_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_mapreduce_1_5_5_nohive_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_mapreduce_1_5_2_nohive_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_shims_1_5_5_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_column_1_10_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_common_1_10_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_encoding_1_10_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_common_1_10_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_hadoop_1_10_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_jackson_1_10_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_catalyst_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_core_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_kvstore_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_launcher_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_common_2_11_2_4_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_common_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_shuffle_2_11_2_4_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_shuffle_2_11_2_4_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sketch_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sql_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_tags_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_unsafe_2_11_2_4_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_RoaringBitmap_0_7_45_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_shims_0_7_45_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_shims_1_5_2_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_7_3_jar.xml" beforeDir="false" />
+    <list default="true" id="bb1068e6-7935-4d90-9d39-665dea642fb3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_databricks_spark_xml_2_11_0_9_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_netty_netty_all_4_1_42_Final_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_column_1_10_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_common_1_10_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_hadoop_1_10_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_jackson_1_10_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_catalyst_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_core_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_kvstore_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_launcher_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sketch_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sql_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_tags_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_unsafe_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_glassfish_jaxb_txw2_2_3_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_RoaringBitmap_0_7_45_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_shims_0_7_45_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_7_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/DataBaseMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/DatabasesUtilsTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Disease/DisGenNetUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Disease/DiseaseCartUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Disease/DiseaseEnhancer.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Disease/DiseaseMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Disease/DiseaseMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Drug/ChEBIUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Drug/DrugBankUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Drug/DrugMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Drug/DrugMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Drug/PharmGKBUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Gene/CIVICUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Gene/EssemblUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Gene/GeneMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Gene/HGNCUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/LNC/LNCMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/LNC/LNCMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/LNC/LNCbookUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/LNC/LNCpediaUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/LNC/mirCodeUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Pathways/Panther.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Pathways/PathBankUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Pathways/PathwayMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Pathways/PathwayMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Pathways/ReactomeUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Protein/BioGridUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Protein/ProteinMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Protein/ProteinMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/Protein/UniprotUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/mRNA/RefSeqUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/mRNA/mRNAMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/mRNA/mRNAMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/miRNAMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/miRNAMainTrait.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/mirBaseUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/mirCancerUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/mirHMDD.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Databases_Module/miRNA/mirTarBaseUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Networks/BioTagMEMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Networks/NetworkMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Networks/NetworksUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Networks/STRINGMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Prediction_Module/Distribute_DT_Hybrid.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Prediction_Module/Intermediate_dataframe_creation.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Prediction_Module/PredictionClasses.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Prediction_Module/TagmeRelatedness.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_databind_2_6_7_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_databind_2_6_7_3_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__commons_beanutils_commons_beanutils_core_1_8_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__commons_io_commons_io_2_4_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__commons_io_commons_io_2_6_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__io_netty_netty_all_4_1_17_Final_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_core_1_5_2_nohive_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_core_1_5_5_nohive_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_mapreduce_1_5_2_nohive_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_mapreduce_1_5_5_nohive_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_shims_1_5_2_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_orc_orc_shims_1_5_5_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_column_1_10_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_common_1_10_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_encoding_1_10_1_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_encoding_1_10_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_hadoop_1_10_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_parquet_parquet_jackson_1_10_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_catalyst_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_core_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_kvstore_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_launcher_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_common_2_11_2_4_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_common_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_shuffle_2_11_2_4_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_network_shuffle_2_11_2_4_5_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sketch_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_sql_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_tags_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_spark_spark_unsafe_2_11_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_roaringbitmap_RoaringBitmap_0_5_11_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_7_1_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/BioTagME_final-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/BioTagME_final-build.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/BioTagME_final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/BioTagME_final.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$04a151a6652b67ba0330$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$04a151a6652b67ba0330.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$04a151a6652b67ba0330.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$51ad9f73190708083833$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$51ad9f73190708083833.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$51ad9f73190708083833.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6b5cce1ed4d4be895e29$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6b5cce1ed4d4be895e29.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6b5cce1ed4d4be895e29.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c865282903add102b5f1$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c865282903add102b5f1.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c865282903add102b5f1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f34d78fc1060a32d20c8$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f34d78fc1060a32d20c8.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f34d78fc1060a32d20c8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0724e47f5a38e5d810b9$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0724e47f5a38e5d810b9.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0724e47f5a38e5d810b9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0c3201f6488f67914961$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0c3201f6488f67914961.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0c3201f6488f67914961.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2f24a8a683ff3269138f$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2f24a8a683ff3269138f.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2f24a8a683ff3269138f.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$75aa8175c776c1ecca89$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$75aa8175c776c1ecca89.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$75aa8175c776c1ecca89.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/dependencyClasspathFiles/previous" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/dependencyClasspathFiles/previous" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationProcedure.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationProcedure.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationUtils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/configuration/biotagme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/configuration/biotagme.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/MainBioTAGMEr.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/MainBioTAGMEr.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateUtils.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/.history" beforeDir="false" afterPath="$PROJECT_DIR$/target/.history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$1$$anonfun$apply$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$1$$anonfun$apply$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$anonfun$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator5$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator6$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator7$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator8$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator8$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$$typecreator9$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Annotation_Module/AnnotationUtils$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/biotagme_final_2.11-0.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/biotagme_final_2.11-0.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/MainBioTAGMEr$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/MainBioTAGMEr$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils$$anonfun$articles_xml_parser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils$$anonfun$articles_xml_parser$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Update_Module/UpdateUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/update/update_cache_2.11/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/update/update_cache_2.11/inputs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/update/update_cache_2.11/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/update/update_cache_2.11/output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/inputFileStamps/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/inputFileStamps/previous" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.11/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.11/input_dsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.11/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.11/output_dsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.11/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.11/inputs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.11/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.11/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileBinaryFileInputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileBinaryFileInputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileSourceFileInputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/_global/_global/compileSourceFileInputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/_global/_global/dependencyClasspathFiles/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/_global/_global/dependencyClasspathFiles/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/compile/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/compile/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/_global/streams/inc_compile_2.11.zip" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/_global/streams/inc_compile_2.11.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/packageBin/_global/streams/output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/project/project/target/" />
-    <ignored path="$PROJECT_DIR$/project/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/MainBioTAGMEr.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationProcedure.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-              <folding>
-                <element signature="e#27#73#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationUtils.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
-              <folding>
-                <element signature="e#27#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/configuration/last_update.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/configuration/biotagme.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="132" column="24" selection-start-line="131" selection-start-column="16" selection-end-line="132" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationTrait.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Package Object" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/configuration/scriptFile.scala" />
-        <option value="$PROJECT_DIR$/build.sbt" />
-        <option value="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateTrait.scala" />
-        <option value="$PROJECT_DIR$/src/main/configuration/last_update.txt" />
-        <option value="$PROJECT_DIR$/src/main/configuration/biotagme.xml" />
-        <option value="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateUtils.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Update_Module/UpdateProcedure.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/MainBioTAGMEr.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationUtils.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationProcedure.scala" />
-      </list>
-    </option>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="835" />
-    <option name="height" value="1055" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="configuration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="Annotation_Module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BioTagME_final" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biotagme_pipeline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="Update_Module" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1bfI08Doq3ljHpTRvy58JM83nir" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="MainBioTAGMEr" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="MainBioTAGMEr" />
-      <module name="BioTagME_final" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MainBioTAGMEr" />
-      </list>
-    </recent_temporary>
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="SbtLocalSettings">
     <option name="availableProjects">
@@ -336,7 +236,7 @@
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="biotagme_pipeline [file:/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/]" />
+                <option name="name" value="biotagme_final [file:/home/antonio/Scrivania/BioTagME_final/]" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
@@ -350,8 +250,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3177410960000" />
-        <entry key="$PROJECT_DIR$/build.sbt" value="2014676002" />
+        <entry key="$PROJECT_DIR$" value="3177516204472" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="1360782095" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="2620759781" />
       </map>
     </option>
@@ -361,188 +261,116 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="972d8136-aa8f-4ea3-84d2-2f496d9a30b4" name="Default Changelist" comment="" />
-      <created>1588615631563</created>
+      <changelist id="bb1068e6-7935-4d90-9d39-665dea642fb3" name="Default Changelist" comment="" />
+      <created>1589016494484</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588615631563</updated>
-      <workItem from="1588615632683" duration="6661000" />
-      <workItem from="1588671344781" duration="24000" />
-      <workItem from="1588704066839" duration="8937000" />
-      <workItem from="1588753566228" duration="6000" />
-      <workItem from="1588777081087" duration="11220000" />
-      <workItem from="1588839449781" duration="6431000" />
-      <workItem from="1588881947845" duration="10698000" />
+      <updated>1589016494484</updated>
+      <workItem from="1589016497101" duration="15331000" />
+      <workItem from="1589116922767" duration="4023000" />
+      <workItem from="1589128054653" duration="613000" />
+      <workItem from="1589134258442" duration="973000" />
+      <workItem from="1589226581259" duration="6284000" />
+      <workItem from="1589269750000" duration="19104000" />
+      <workItem from="1589353715021" duration="19150000" />
+      <workItem from="1589400142752" duration="5524000" />
+      <workItem from="1589440883491" duration="25347000" />
+      <workItem from="1589528724619" duration="20662000" />
+      <workItem from="1589728132099" duration="1534000" />
+      <workItem from="1589729712626" duration="14195000" />
+      <workItem from="1589794002260" duration="17246000" />
+      <workItem from="1589871502634" duration="22638000" />
+      <workItem from="1589961937334" duration="9296000" />
+      <workItem from="1589989458543" duration="14340000" />
+      <workItem from="1590054979484" duration="109000" />
+      <workItem from="1590055121070" duration="15096000" />
+      <workItem from="1590306106582" duration="24613000" />
+      <workItem from="1590477394919" duration="5875000" />
+      <workItem from="1590490403793" duration="5917000" />
+      <workItem from="1590604165643" duration="5112000" />
+      <workItem from="1590650413656" duration="11000" />
+      <workItem from="1590651656036" duration="1428000" />
+      <workItem from="1590671993079" duration="5569000" />
+      <workItem from="1590737210206" duration="11488000" />
+      <workItem from="1590763384344" duration="10720000" />
+      <workItem from="1590825549913" duration="30568000" />
+      <workItem from="1591014495174" duration="25581000" />
+      <workItem from="1591170321893" duration="5948000" />
+      <workItem from="1591195587681" duration="16957000" />
+      <workItem from="1591255130097" duration="41228000" />
+      <workItem from="1591342896521" duration="39983000" />
+      <workItem from="1591426728379" duration="39659000" />
+      <workItem from="1591519542617" duration="28006000" />
+      <workItem from="1591559593399" duration="21000" />
+      <workItem from="1591599634772" duration="34026000" />
+      <workItem from="1591652956271" duration="6629000" />
+      <workItem from="1591686228277" duration="6777000" />
+      <workItem from="1591731081812" duration="8456000" />
+      <workItem from="1591740427947" duration="342000" />
+      <workItem from="1591774653700" duration="10243000" />
+      <workItem from="1591801344330" duration="18281000" />
+      <workItem from="1591858254556" duration="7000" />
+      <workItem from="1591864323756" duration="9397000" />
+      <workItem from="1591885593379" duration="1459000" />
+      <workItem from="1591889367342" duration="15523000" />
+      <workItem from="1591915424428" duration="711000" />
+      <workItem from="1591944979307" duration="50829000" />
+      <workItem from="1592034189261" duration="18581000" />
+      <workItem from="1592062030277" duration="16000" />
+      <workItem from="1592073259644" duration="11659000" />
+      <workItem from="1592146673779" duration="5799000" />
+      <workItem from="1592159399190" duration="132000" />
+      <workItem from="1592159566931" duration="9000" />
+      <workItem from="1592227157754" duration="8079000" />
+      <workItem from="1592235410808" duration="10269000" />
+      <workItem from="1592292348447" duration="18479000" />
+      <workItem from="1592389632877" duration="4414000" />
+      <workItem from="1592403000629" duration="11043000" />
+      <workItem from="1592464093617" duration="382000" />
+      <workItem from="1592464506406" duration="22883000" />
+      <workItem from="1592503594236" duration="1143000" />
+      <workItem from="1592505360077" duration="908000" />
+      <workItem from="1592637446845" duration="12178000" />
+      <workItem from="1592657559035" duration="804000" />
+      <workItem from="1592845597502" duration="3700000" />
+      <workItem from="1592849449380" duration="2477000" />
+      <workItem from="1592854486081" duration="4785000" />
+      <workItem from="1592895242598" duration="8459000" />
+      <workItem from="1592909306128" duration="34000" />
+      <workItem from="1592909681279" duration="36000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43977000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748754" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39416847" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.06911447" />
-      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.31533477" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.2526998" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="sbt" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Gradle" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="right" id="Bean Validation" order="11" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationClasses.scala">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/configuration/scriptFile.scala" />
-    <entry file="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/spark/spark-core_2.11/2.4.3/spark-core_2.11-2.4.3-sources.jar!/org/apache/spark/deploy/SparkSubmit.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="923" selection-start-line="923" selection-end-line="923" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lucidchart/xtract_2.11/2.0.1/xtract_2.11-2.0.1-sources.jar!/com/lucidchart/open/xtract/package.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Update_Module/UpdateTrait.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="109" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
-          <folding>
-            <element signature="e#23#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Update_Module/UpdateProcedure.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding>
-            <element signature="e#23#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Update_Module/UpdataClasses.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
-          <folding>
-            <element signature="e#23#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.sbt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Update_Module/UpdateUtils.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/spark/spark-sql_2.11/2.4.0/spark-sql_2.11-2.4.0-sources.jar!/org/apache/spark/sql/execution/datasources/DataSource.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1026">
-          <caret line="549" selection-start-line="549" selection-end-line="549" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationTrait.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/MainBioTAGMEr.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/configuration/biotagme.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="132" column="24" selection-start-line="131" selection-start-column="16" selection-end-line="132" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/configuration/last_update.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationUtils.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
-          <folding>
-            <element signature="e#27#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Annotation_Module/AnnotationProcedure.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-          <folding>
-            <element signature="e#27#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="279" y="26" key="#Project_Structure" timestamp="1591599639801">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="279" y="26" key="#Project_Structure/0.0.1366.732@0.0.1366.732" timestamp="1591599639801" />
+    <state x="417" y="122" width="532" height="487" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1592465153419">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="417" y="122" width="532" height="487" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.732@0.0.1366.732" timestamp="1592465153419" />
+    <state x="1952" y="180" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1591035549900" />
+    <state x="277" y="179" key="com.intellij.ide.util.TipDialog" timestamp="1592909680831">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="277" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.732@0.0.1366.732" timestamp="1592909680831" />
+    <state x="1875" y="285" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1591014496120" />
+    <state x="348" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590695165701">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="348" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.732@0.0.1366.732" timestamp="1590695165701" />
+    <state x="347" y="160" key="run.anything.popup" timestamp="1592002026800">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="347" y="160" key="run.anything.popup/0.0.1366.732@0.0.1366.732" timestamp="1592002026800" />
+    <state x="1854" y="236" key="run.anything.popup/0.0.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1591016002923" />
+    <state x="346" y="53" width="672" height="678" key="search.everywhere.popup" timestamp="1592903268778">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="346" y="53" width="672" height="678" key="search.everywhere.popup/0.0.1366.732@0.0.1366.732" timestamp="1592903268778" />
   </component>
 </project>
