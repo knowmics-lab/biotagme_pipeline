@@ -29,16 +29,19 @@ object mirBaseUtils {
      * get_mirna function reads the either mirna.txt or mature.txt file and return a spark DataFrame containing only
      * selected species undead miRNA.
     **/
-    def get_mirBase(root:String, spark:SparkSession, sel_species: String, sel_file:Int):DataFrame = {
+    def get_mirBase(paths: Map[String, String], spark:SparkSession, sel_species: String, sel_file:Int):DataFrame = {
         import spark.implicits._
-        val file_nm    = if(sel_file == 0) "/mirna.txt" else "/mirna_mature.txt"
+        val root_path  = paths("root_path")
+
+        val file_nm    = if(sel_file == 0) paths("mirna_file") else paths("mature_file")
         val sel_header = if(sel_file == 0) header_mirna else header_mature
-        val mirna      = read_tsv(root + file_nm, spark, req_drop = false, sel_header,"false")
-        val species    = read_tsv(root + "/mirna_species.txt", spark, req_drop=false, header_species, "false")
+
+        val mirna      = read_tsv(root_path + "/" + file_nm,              spark, req_drop = false, sel_header,"false")
+        val species    = read_tsv(root_path + "/" + paths("specie_file"), spark, req_drop = false, header_species, "false")
             .where(lower($"species_name") === sel_species.toLowerCase).select("species_symbol")
 
         mirna.withColumn(colName="species_symbol", split($"miRNA_name","-").getItem(0))
-            .join(species, usingColumn="species_symbol")
+            .join(species, usingColumn = "species_symbol")
             .where(condition=$"is_dead" === 0)
             .drop(colNames="species_symbol", "is_dead")
     }

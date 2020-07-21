@@ -5,8 +5,31 @@ import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
+import scala.xml.{Elem, Node}
+
 
 object Intermediate_dataframe_creation {
+  /* This function is used to create a paths_map row. Both the multiple space and \n will be replaced with "" */
+  def addEelem(key:String, value: Node):(String,String) =
+      key -> value.child(3).text.replaceAll("[\\s+|\n+]","")
+
+  /* During this phase, the key-value association into the xml file will be converted to scala tuple*/
+  def widi_widj_paths(xml_obj: Elem): Map[String, String] = {
+      var paths_map: Map[String, String] = Map()
+      xml_obj.child.foreach(elem_0 =>
+          elem_0.label match {
+             case "hdfs_paths" =>
+                 elem_0.child.foreach(elem_1 => elem_1.label match {
+                     case "DocumentsAnnotations_path" => paths_map += addEelem("DocumentsAnnotations_path", elem_1)
+                     case "wid1_wid2_path"            => paths_map += addEelem("wid1_wid2_path", elem_1)
+                     case "pmids_wiki_ids_path"       => paths_map += addEelem("pmids_wiki_ids_path", elem_1)
+                     case "wiki_ids_spot_path"        => paths_map += addEelem("wiki_ids_spot_path", elem_1)
+                     case _ => null
+                 })
+             case _ => null
+          })
+      paths_map
+  }
 
    /**
     * The updateDataFrame function is used to update the old wikiId_spot and wid1_wid2_freq DataFrame
@@ -47,10 +70,11 @@ object Intermediate_dataframe_creation {
      * this pairs are obtained. Finally the 1.,2. DataFrames are built through the appropriate selecting operation
      * and stored within the hadoop filesystem.
      **/
-    def intermediate_df_creation(spark: SparkSession, paths: Map[String, String], opt: Int):Unit = {
+    def intermediate_df_creation(spark: SparkSession, xml_obj: Elem, opt: Int):Unit = {
         import spark.implicits._
         val logger = Logger.getLogger("Intermediate DataFrames creation")
         val fs     = FileSystem.get(spark.sparkContext.hadoopConfiguration)
+        val paths  = widi_widj_paths(xml_obj)
 
         logger.info("Reading of the DataFrame containing the documents annotations...")
         val path_docs_ann = paths("DocumentsAnnotations_path") + "_filtered" + (if(opt == 0) "1" else "")

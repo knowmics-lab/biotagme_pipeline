@@ -4,7 +4,39 @@ import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.apache.spark.sql.{Column, DataFrame}
 import org.apache.spark.sql.functions._
 
+import scala.xml.Elem
+
 trait DatabasesUtilsTrait {
+  /**
+   * get_element_path return all the hdfs path where the considered element information are stored
+   **/
+  def get_element_path(xml_obj: Elem, branch_xml:String, pref_filt:String): Map[String, Map[String,String]] = {
+      var paths_map: Map[String, Map[String,String]] = Map.empty
+      // parsing of the xml file
+      xml_obj.child.foreach(elem_0 =>
+          elem_0.label match {
+             case branch_xml =>
+                 elem_0.child.foreach(elem_1 => {
+                    if(elem_1.label.toLowerCase.contains(pref_filt)){
+                       elem_1.child.foreach(elem_2 => {
+                           if (!paths_map.contains(elem_2.label)) {
+                               var inner_map: Map[String,String] = Map.empty
+                                   elem_2.child.foreach(elem_3 => {
+                                   if(!elem_3.label.contains("description"))
+                                      if(elem_3.child.nonEmpty)
+                                         inner_map = inner_map + (elem_3.label -> elem_3.child.text.replaceAll("[\\s+|\n]",""))
+                                   })
+                               if(inner_map.nonEmpty)
+                                  paths_map = paths_map + (elem_2.label -> inner_map)
+                           }
+                       })
+                    }
+                 })
+             case _ => null
+          })
+      paths_map
+  }
+
   /**
    * df_elaboration return a dataframe contains only the dfb columns don't have corresponding ids in dfa
    **/

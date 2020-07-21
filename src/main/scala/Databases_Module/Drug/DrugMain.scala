@@ -7,12 +7,17 @@ import DrugBankUtils._
 import PharmGKBUtils._
 import org.apache.spark.sql.functions._
 
+import scala.xml.Elem
+
 object DrugMain extends DrugMainTrait with DatabasesUtilsTrait{
-    def get_drugs_DataFrames(spark: SparkSession):Unit = {
+    def get_drugs_DataFrames(spark: SparkSession, conf_xml:Elem):Unit = {
         import spark.implicits._
+        val paths = get_element_path(conf_xml, "hdfs_paths", "dis")
 
         /** DrugBank **/
-        val drugbank    = spark.read.option("rowTag", "drug").xml("/Drug/DrugBank/drugBank_db.xml").persist()
+        val drugbank_paths = paths("drugbank_path")
+        val dbr_root       = drugbank_paths("root_path")
+        val drugbank       = spark.read.option("rowTag", "drug").xml(dbr_root + "/" + drugbank_paths("drug_file")).persist()
 
         // DataFrame necessary to build the indexing biological elements DataFrame
         val drug_extId  = get_drugs_otherInfo(drugbank, "external-identifiers.external-identifier", spark, Seq("identifier","resource"))
@@ -58,8 +63,9 @@ object DrugMain extends DrugMainTrait with DatabasesUtilsTrait{
         */
 
         /** PharmGKB **/
-        val root_path   = "/Drug/PharmGKB"
-        val pharm_drugs = pharm_loader(root_path, spark).persist()
+        val pharm_paths = paths("pharmkb_path")
+        val phm_root    = "/Drug/PharmGKB"
+        val pharm_drugs = pharm_loader(phm_root, spark).persist()
         val pharm_ref   = columns_group(pharm_drugs, "Cross_references")
         val pharm_final = pharm_drugs.selectExpr("PGKB_ID", "DRUG_NAME", "DRUG_NAME as OTHER_NAME").
             union(columns_group(pharm_drugs, "Generic_Name")).
@@ -68,19 +74,20 @@ object DrugMain extends DrugMainTrait with DatabasesUtilsTrait{
 
 
         /** Indexing **/
-        drug_indexing = create_drugs_indexing(drugBank4indexing, pharm_final, drug_extId, pharm_ref)
+        val sav_root_path = "/" + phm_root.split("/")(1)
+        drug_indexing     = create_drugs_indexing(drugBank4indexing, pharm_final, drug_extId, pharm_ref)
         drug_indexing.persist
-        drug_indexing.write.mode("overwrite").parquet("/Drug/Drug_indexing")
+        drug_indexing.write.mode("overwrite").parquet(sav_root_path + "/Drug_indexing")
 
         /** Relationships **/
         create_belem_belem_relationships(drug_indexing, drug_drug, "drug")
-           .union(create_relationships(drug_enzymes, "drugbank_id", "drug_name", drug_indexing, "drug-enzyme", "enzyme_name", "enzyme_id"))
-           .union(create_relationships(drug_enzymes, "drugbank_id", "drug_name", drug_indexing, "drug-gene",   "enzyme_polypeptide_gene_name"))
-           .union(create_relationships(drug_targets, "drugbank_id", "drug_name", drug_indexing, "drug-gene",   "target_name", "target_id"))
-           .union(create_relationships(drug_targets, "drugbank_id", "drug_name", drug_indexing, "drug-gene",   "target_polypeptide_gene_name"))
-           .union(create_relationships(drug_transp,  "drugbank_id", "drug_name", drug_indexing, "drug-transporter", "transporter_name", "transporter_id"))
-           .union(create_relationships(drug_transp,  "drugbank_id", "drug_name", drug_indexing, "drug-gene",   "transporter_polypeptide_gene_name"))
-           .write.mode("overwrite").parquet("/Drug/Drug_relationships")
+           .union(create_relationships(drug_enzymes, "drugbank_id", "drug_name", drug_indexing, "drug-enzyme",     "enzyme_name", "enzyme_id"))
+           .union(create_relationships(drug_enzymes, "drugbank_id", "drug_name", drug_indexing, "drug-gene",       "enzyme_polypeptide_gene_name"))
+           .union(create_relationships(drug_targets, "drugbank_id", "drug_name", drug_indexing, "drug-gene",       "target_name", "target_id"))
+           .union(create_relationships(drug_targets, "drugbank_id", "drug_name", drug_indexing, "drug-gene",       "target_polypeptide_gene_name"))
+           .union(create_relationships(drug_transp,  "drugbank_id", "drug_name", drug_indexing, "drug-transporter","transporter_name", "transporter_id"))
+           .union(create_relationships(drug_transp,  "drugbank_id", "drug_name", drug_indexing, "drug-gene",       "transporter_polypeptide_gene_name"))
+           .write.mode("overwrite").parquet(sav_root_path + "/Drug_relationships")
 
         drugbank.unpersist; pharm_drugs.unpersist; drug_indexing.unpersist()
     }

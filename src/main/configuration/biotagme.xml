@@ -210,83 +210,211 @@
                 /tagme_relatedness
             </value>
         </tagme_relatedness>
+
         <!-- DISEASE PATHS -->
-        <disgenet_path>
-            <description>
-                The hdfs path in which is stored the disgenet tsv file containing diseases information
-            </description>
-            <value>
-                /DISEASE/DISGENET
-            </value>
-        </disgenet_path>
-        <kegg_dis_path>
-            <description>
-                The hdfs path in which is stored the kegg csv file containing diseases information
-            </description>
-            <value>
-                /DISEASE/KEGG
-            </value>
-        </kegg_dis_path>
-        <civic_dis_path>
-            <description>
-                The hdfs path in which is stored the civic json file containing diseases information
-            </description>
-            <value>
-                /DISEASE/CIVIC
-            </value>
-        </civic_dis_path>
+        <disease>
+            <!-- DisGeNET -->
+            <disgenet_path>
+                <description>
+                    The hdfs path in which is stored the disgenet tsv file containing diseases information
+                </description>
+                <root_path>
+                    /Disease/DisGeNet
+                </root_path>
+                <gene_disease>
+                    all_gene_disease_associations.tsv
+                </gene_disease>
+                <variant_disease>
+                    all_variant_disease_associations.tsv
+                </variant_disease>
+                <disease_disease>
+                    disease_to_disease_CURATED.tsv
+                </disease_disease>
+            </disgenet_path>
+            <!--  DO -->
+            <disease_ontology_path>
+                <description>
+                    The hdfs path where the disease ontology is stored
+                </description>
+                <root_path>
+                    /Disease/DiseaseCard
+                </root_path>
+            </disease_ontology_path>
+            <!-- Disease Enhancer -->
+            <disease_enhancer_path>
+                <description>
+                    The hdfs path where the disease enhancer database is stored
+                </description>
+                <root_path>
+                    /Disease/DiseaseEnhancer
+                </root_path>
+                <disease_info>
+                    enh2disease-1.0.2.txt
+                </disease_info>
+            </disease_enhancer_path>
+        </disease>
+
         <!-- DRUG PATHS-->
-        <drugbank_path>
-            <description>
-                The hdfs path in which is stored the drugbanck csv file containing drugs information
-            </description>
-            <value>
-                /DRUG/DRUGBANCK
-            </value>
-        </drugbank_path>
-        <kegg_drg_path>
-            <description>
-                The hdfs path in which is stored the kegg csv file containing drugs information
-            </description>
-            <value>
-                /DRUG/KEGG
-            </value>
-        </kegg_drg_path>
-        <pharmkb_path>
-            <description>
-                The hdfs path in which is stored the pharmkb csv file containing drugs information
-            </description>
-            <value>
-                /DRUG/PHARMKB
-            </value>
-        </pharmkb_path>
+        <drug>
+            <!-- DrugBank -->
+            <drugbank_path>
+                <description>
+                    The hdfs path in which is stored the drugbanck csv file containing drugs information
+                </description>
+                <root_path>
+                    /Drug/DrugBank
+                </root_path>
+                <drug_file>
+                    drugBank_db.xml
+                </drug_file>
+            </drugbank_path>
+            <!-- PharmGKB -->
+            <pharmkb_path>
+                <description>
+                    The hdfs path in which is stored the pharmkb csv file containing drugs information
+                </description>
+                <root_path>
+                    /Drug/PharmGKB
+                </root_path>
+            </pharmkb_path>
+        </drug>
+
         <!-- GENE PATHS -->
-        <hgnc_path>
-            <description>
-                The hdfs path in which is stored the hgnc txt file containing genes information
-            </description>
-            <value>
-                /GENE/HGNC
-            </value>
-        </hgnc_path>
+        <gene>
+            <!-- HGNC -->
+            <hgnc_path>
+                <description>
+                    The hdfs path in which is stored the hgnc txt file containing genes information
+                </description>
+                <root_path>
+                    /Gene/HGNC
+                </root_path>
+            </hgnc_path>
+            <!-- Ensembl -->
+            <ensembl_path>
+                <description>
+                    The hdfs path in which is stored the ensembl file containing genes information
+                </description>
+                <root_path>
+                    /Gene/Essembl
+                </root_path>
+                <gene_file>
+                    gene_data.txt
+                </gene_file>
+            </ensembl_path>
+            <civic_path>
+                <description>
+                    The hdfs path in which is stored the civic file containing genes information
+                </description>
+                <root_path>
+                    /Gene/CIVIC
+                </root_path>
+                <gene_file>
+                    nightly-ClinicalEvidenceSummaries.tsv
+                </gene_file>
+            </civic_path>
+        </gene>
+
+        <!-- LNC -->
+        <lnc>
+            <!-- LNCPedia -->
+            <lnc_pedia>
+                <description>
+                    The hdfs path in which is stored the lncpedia's gtf files containing lnc information
+                </description>
+                <root_path>
+                    /LNC/LNCpedia
+                </root_path>
+                <hg38_path>
+                    lncipedia_5_2_hg38.gtf
+                </hg38_path>
+                <hg19_path>
+                    lncipedia_5_2_hg19.gtf
+                </hg19_path>
+            </lnc_pedia>
+            <!-- mirCode  -->
+            <mirCode_path>
+                <description>
+                    The hdfs path in which is stored the mircode's txt file containing lnc information
+                </description>
+                <root_path>
+                    /LNC/mirCode
+                </root_path>
+            </mirCode_path>
+        </lnc>
+
         <!-- miRNA PATHS -->
-        <mirna_path>
-            <description>
-                The hdfs path in which is stored the mirna txt file containing miRNA information
-            </description>
-            <value>
-                /miRNA/miRNA
-            </value>
-        </mirna_path>
-        <mirna_mat_path>
-            <description>
-                The hdfs path in which is stored the mirna_mature txt file containing miRNA information
-            </description>
-            <value>
-                /miRNA/miRNA_MATURE
-            </value>
-        </mirna_mat_path>
+        <miRNA>
+            <!-- mirBase -->
+            <mirbase_path>
+                <description>
+                    The hdfs path in which is stored the mirBase's txt files containing miRNA information
+                </description>
+                <root_path>
+                    /miRNA/mirbase
+                </root_path>
+                <mirna_file>
+                    mirna.txt
+                </mirna_file>
+                <mature_file>
+                    mirna_mature.txt
+                </mature_file>
+                <specie_file>
+                    mirna_species.txt
+                </specie_file>
+            </mirbase_path>
+            <!-- mirCancer -->
+            <mirCancer_path>
+                <description>
+                    The hdfs path in which is stored the mirCancer's txt file containing miRNA information
+                </description>
+                <root_path>
+                    /miRNA/mirCancer
+                </root_path>
+            </mirCancer_path>
+            <!--  mirTarBase -->
+            <mirTarBase_path>
+                <description>
+                    The hdfs path in which is stored the mirTarBase's csv file containing miRNA information
+                </description>
+                <root_path>
+                    /miRNA/mirTarBase
+                </root_path>
+            </mirTarBase_path>
+            <!--  HMDD -->
+            <HMDD_path>
+                <description>
+                    The hdfs path in which is stored the HMDD's txt file containing miRNA information
+                </description>
+                <root_path>
+                    /miRNA/HMDD
+                </root_path>
+            </HMDD_path>
+        </miRNA>
+
+        <!-- mRNA -->
+        <mRNA>
+            <!-- RefSeq -->
+            <RefSeq_path>
+                <description>
+                    The hdfs path in which is stored the RefSeq's fna files containing mRNA information
+                </description>
+                <root_path>
+                    /RNA
+                </root_path>
+            </RefSeq_path>
+        </mRNA>
+
         <!-- PROTEIN -->
+        <Protein>
+            <UniProtKB_path>
+                <description>
+                    The hdfs path in which is stored the UniprotKB file containing Protein information
+                </description>
+                <root_path>
+                    /Protein/UniprotKB
+                </root_path>
+            </UniProtKB_path>
         <string_path>
             <description>
                 The hdfs path in which is stored the aliases, names of the protein as well as the file containing the whole string network
@@ -296,13 +424,64 @@
             </value>
         </string_path>
         <string_species>
-            <description>
-
-            </description>
             <value>
                 9606
             </value>
         </string_species>
+        </Protein>
+
+        <!-- Pathway -->
+        <Pathway>
+            <PathBank_path>
+                <description>
+                    The hdfs path in which is stored the PathBank csv files containing Pathways information
+                </description>
+                <root_path>
+                    /Pathways/PathBank
+                </root_path>
+                <pathways_file>
+                    pathbank_pathways.csv
+                </pathways_file>
+                <metabolites_pathways_file>
+                    pathbank_all_metabolites.csv
+                </metabolites_pathways_file>
+                <proteins_pathwats_file>
+                    pathbank_all_proteins.csv
+                </proteins_pathwats_file>
+            </PathBank_path>
+            <Reactome_path>
+                <description>
+                    The hdfs path in which is stored the Reactome txt files containing Pathways information
+                </description>
+                <root_path>
+                    /Pathways/Reactom
+                </root_path>
+                <pathways_file>
+                    ReactomePathways.txt
+                </pathways_file>
+                <pathways_pathways_file>
+                    ReactomePathwaysRelation.txt
+                </pathways_pathways_file>
+                <ensembl_reactome_file>
+                    Ensembl2Reactome_PE_All_Levels.txt
+                </ensembl_reactome_file>
+                <mirBase_reactome_file>
+                    miRBase2Reactome_PE_All_Levels.txt
+                </mirBase_reactome_file>
+                <uniprot_reactome_file>
+                    UniProt2Reactome_PE_All_Levels.txt
+                </uniprot_reactome_file>
+            </Reactome_path>
+            <Panther>
+                <description>
+                    The hdfs path in which is stored the Panther txt files containing Pathways information
+                </description>
+                <root_path>
+                    /Pathways/Panther
+                </root_path>
+            </Panther>
+        </Pathway>
+
         <!-- GO -->
         <go_path>
             <description>
@@ -312,6 +491,7 @@
                 /ONTOLOGY/GO
             </value>
         </go_path>
+
         <!-- ENZYME -->
         <enzyme_path>
             <description>
@@ -321,24 +501,7 @@
                 /ENZYME/KEGG
             </value>
         </enzyme_path>
-        <!-- DGROUP -->
-        <dgroup_path>
-            <description>
-                The hdfs path in which is stored the csv file containing dgroup information
-            </description>
-            <value>
-                /DGROUP/KEGG
-            </value>
-        </dgroup_path>
-        <!-- LNC -->
-        <lnc_path>
-            <description>
-                The hdfs path in which is stored the csv file containing lnc information
-            </description>
-            <value>
-                /LNC/LNCIPEDIA
-            </value>
-        </lnc_path>
+
         <!-- NETWORKS DATA -->
         <network_data>
             <description>

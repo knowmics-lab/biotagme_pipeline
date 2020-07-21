@@ -23,12 +23,6 @@ object ReactomeUtils {
         "_c7        as Species"
     )
 
-    val paths = Seq(
-        "Ensembl2Reactome_PE_All_Levels.txt",
-        "miRBase2Reactome_PE_All_Levels.txt",
-        "UniProt2Reactome_PE_All_Levels.txt"
-    )
-
 
     def getReactome(path: String, spark:SparkSession, flag:Int, species: String = "Homo sapiens", source:String = ""): DataFrame = {
         import spark.implicits._
@@ -47,19 +41,30 @@ object ReactomeUtils {
 
 
     def create_reactom_relationship(
-        root:String, spark:SparkSession, pathway_indexing:DataFrame,
+        path_files:Map[String, String], spark:SparkSession, pathway_indexing:DataFrame,
         elem_oelem: (DataFrame,String,String,DataFrame,String,String,String) => DataFrame
     ):  DataFrame = {
 
-        val type_relats = Map("Ensembl" -> "gene", "miRBase" -> "miRNA", "UniProt" -> "protein")
+        val path_files_root = path_files("root_path")
+        val paths = Seq(
+            path_files_root + "/" + path_files("ensembl_reactome_file"),
+            path_files_root + "/" + path_files("mirBase_reactome_file"),
+            path_files_root + "/" + path_files("uniprot_reactome_file")
+        )
+        val type_relats = Map(
+            "Ensembl" -> "gene",
+            "miRBase" -> "miRNA",
+            "UniProt" -> "protein"
+        )
+
         var reactome_rel: DataFrame = null
         paths.foreach(path => {
             val source   = path.split("2")(0)
-            var df       = getReactome(root + "/Reactome/" + path, spark, flag = 2, source=source)
+            var df       = getReactome(path, spark, flag = 2, source=source)
 
             df = elem_oelem(
                df, "Reactome_ID", "Pathway_name", pathway_indexing,
-               "pathway-"+type_relats(source), "Element_name", source+"_ID"
+               "pathway-" + type_relats(source), "Element_name", source+"_ID"
             )
             reactome_rel = if(reactome_rel == null) df else reactome_rel.union(df)
         })

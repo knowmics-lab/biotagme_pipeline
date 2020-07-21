@@ -15,15 +15,8 @@ object DiseaseEnhancer {
      *   by the DiseaseEnhancer database.
      **/
      def get_disease_enhancer(root:String, spark:SparkSession):DataFrame = {
-         read_tsv(
-             root + "/DiseaseEnhancer/enh2disease-1.0.2.txt",
-             spark, req_drop = false, header_disease_enhancer, "false"
-         ).distinct
-          .select(
-            concat_ws(":", lit("DE"), monotonically_increasing_id).as("de_id"),
-            col("disease_name"), col("gene_name")
-          )
-
+         read_tsv(root, spark, req_drop = false, header_disease_enhancer, "false").distinct
+            .select(concat_ws(":", lit("DE"), monotonically_increasing_id).as("de_id"),col("disease_name"), col("gene_name"))
      }
 
      def get_disEnh2indexing(df: DataFrame): DataFrame = {

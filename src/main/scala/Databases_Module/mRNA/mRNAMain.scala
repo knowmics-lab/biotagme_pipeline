@@ -4,10 +4,13 @@ import Databases_Module.DatabasesUtilsTrait
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import RefSeqUtils._
 
-object mRNAMain extends mRNAMainTrait with DatabasesUtilsTrait{
-      def get_mRNA_dataframes(spark: SparkSession): Unit = {
+import scala.xml.Elem
 
-          val root: String      = "/RNA"
+object mRNAMain extends mRNAMainTrait with DatabasesUtilsTrait{
+      def get_mRNA_dataframes(spark: SparkSession, conf_xml: Elem): Unit = {
+          val paths = get_element_path(conf_xml, "hdfs_paths", "mRNA")
+
+          val root: String      = paths("RefSeq_path")("root_path")
           val mRNA: DataFrame   = getRefSeq(root + "/*", spark)
           val mRNA4indexing = mRNA
               .selectExpr("RNA_id", "gene_name as mRNA_name", "lower(RNA_name) as other_name")

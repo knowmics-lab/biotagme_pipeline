@@ -48,7 +48,7 @@ object EssemblUtils {
             val path = paths.next.getPath.toString
             if(!(path.contains("data") || path.toLowerCase().contains("hgnc"))){
                 val type_rel = path.split("_")(1).split("\\.")(0)
-                var tmp = spark.read.format("csv")
+                val tmp = spark.read.format("csv")
                     .option("header", "true").option("sep", "\t").option("inferSchema", "true")
                     .load(path).distinct
                     .withColumnRenamed("Gene stable ID", "Ensembl_gene_id")
