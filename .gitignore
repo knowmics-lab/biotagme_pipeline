@@ -1,0 +1,4 @@
+.idea
+metastore_db
+target
+derby.log
