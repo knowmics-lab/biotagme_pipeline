@@ -6,14 +6,15 @@ import scala.xml.{Elem, Node}
 
 /**
  * Such trait defines the AnnotationProcedure model. Therefore, all the necessary functions related to
- * annotation procedure are defined here. Since the trait component is similar to Java abstract class,
+ * annotation procedure are defined here. The trait component is similar to Java abstract class, so
  * some methods are also implemented.
  **/
 
 trait AnnotationTrait {
 
   /* key-value association creation */
-  def addTuple(key: String, value: Node):(String, String) = key -> value.child(3).text.replaceAll("[\\s+|\n]","")
+  def addTuple(key: String, value: Node):(String, String) =
+      key -> value.child(3).text.replaceAll("[\\s+|\n]","")
 
   /**
    * The getTagme_info function is defined to get all the TAGME configuration parameters from the xml
@@ -35,10 +36,10 @@ trait AnnotationTrait {
                       case _ => null
                   })
               case "hdfs_paths" =>
-                  elem_0.child.foreach(elem_1  => elem_1.label match {
-                      case "allDocuments_path" => tagme_params = tagme_params + addTuple("allDocuments_path", elem_1)
-                      case "newDocuments_path" => tagme_params = tagme_params + addTuple("newDocuments_path", elem_1)
-                      case "categories_path"   => tagme_params = tagme_params + addTuple("categories_path",   elem_1)
+                  elem_0.child.foreach(elem_1          => elem_1.label match {
+                      case "allDocuments_path"         => tagme_params = tagme_params + addTuple("allDocuments_path", elem_1)
+                      case "newDocuments_path"         => tagme_params = tagme_params + addTuple("newDocuments_path", elem_1)
+                      case "categories_path"           => tagme_params = tagme_params + addTuple("categories_path",   elem_1)
                       case "DocumentsAnnotations_path" => tagme_params = tagme_params + addTuple("DocumentsAnnotations_path",elem_1)
                       case _ => null
               })

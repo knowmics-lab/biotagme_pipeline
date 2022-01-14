@@ -3,35 +3,15 @@ package Prediction_Module
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
 
-import scala.xml.{Elem, Node}
+import scala.collection.mutable
+
 
 
 object Intermediate_dataframe_creation {
-  /* This function is used to create a paths_map row. Both the multiple space and \n will be replaced with "" */
-  def addEelem(key:String, value: Node):(String,String) =
-      key -> value.child(3).text.replaceAll("[\\s+|\n+]","")
-
-  /* During this phase, the key-value association into the xml file will be converted to scala tuple*/
-  def widi_widj_paths(xml_obj: Elem): Map[String, String] = {
-      var paths_map: Map[String, String] = Map()
-      xml_obj.child.foreach(elem_0 =>
-          elem_0.label match {
-             case "hdfs_paths" =>
-                 elem_0.child.foreach(elem_1 => elem_1.label match {
-                     case "DocumentsAnnotations_path" => paths_map += addEelem("DocumentsAnnotations_path", elem_1)
-                     case "wid1_wid2_path"            => paths_map += addEelem("wid1_wid2_path", elem_1)
-                     case "pmids_wiki_ids_path"       => paths_map += addEelem("pmids_wiki_ids_path", elem_1)
-                     case "wiki_ids_spot_path"        => paths_map += addEelem("wiki_ids_spot_path", elem_1)
-                     case _ => null
-                 })
-             case _ => null
-          })
-      paths_map
-  }
-
-   /**
+    /**
     * The updateDataFrame function is used to update the old wikiId_spot and wid1_wid2_freq DataFrame
     * when the updating procedure is triggered.
     * NOTE:
@@ -57,6 +37,10 @@ object Intermediate_dataframe_creation {
                       new_df.join(old_df, Seq("wiki_id", "spot"), "leftanti")
                             .write.mode("append").parquet(root_pat)
                       fs.delete(new Path(root_pat + "1"), true)
+                 case 3 =>
+                      new_df.join(old_df, Seq("wid1", "wid2", "pmid"), "leftanti")
+                            .write.mode("append").parquet(root_pat)
+                      fs.delete(new Path(root_pat + "1"), true)
         }
     }
 
@@ -70,11 +54,12 @@ object Intermediate_dataframe_creation {
      * this pairs are obtained. Finally the 1.,2. DataFrames are built through the appropriate selecting operation
      * and stored within the hadoop filesystem.
      **/
-    def intermediate_df_creation(spark: SparkSession, xml_obj: Elem, opt: Int):Unit = {
+    def intermediate_df_creation(spark: SparkSession, conf_map: mutable.Map[String, Any], opt: Int):Unit = {
         import spark.implicits._
+
         val logger = Logger.getLogger("Intermediate DataFrames creation")
         val fs     = FileSystem.get(spark.sparkContext.hadoopConfiguration)
-        val paths  = widi_widj_paths(xml_obj)
+        val paths  = conf_map("hdfs_paths").asInstanceOf[mutable.Map[String, String]]
 
         logger.info("Reading of the DataFrame containing the documents annotations...")
         val path_docs_ann = paths("DocumentsAnnotations_path") + "_filtered" + (if(opt == 0) "1" else "")
@@ -83,15 +68,24 @@ object Intermediate_dataframe_creation {
 
         if(doc_annotate.count() != 0) {
            logger.info("Beginning of the wid1_wid2_df generation...")
-           val wid1_wid2_df = doc_annotate.selectExpr("pmid", "wiki_id as wid1").distinct
+           var wid1_wid2_df = doc_annotate.selectExpr("pmid", "wiki_id as wid1").distinct
                .join(doc_annotate.selectExpr("pmid as pmid2", "wiki_id as wid2").distinct,
                     $"pmid" === $"pmid2" && $"wid1" < $"wid2")
                .select("pmid", "wid1", "wid2")
-               .groupBy("wid1", "wid2").agg(countDistinct(col("pmid")).as("freq"))
 
+           //this row is new, so we need to test it
+           val top_wind = Window.orderBy($"wid1", $"wid2", desc("pmid")).partitionBy("wid1", "wid2")
+           wid1_wid2_df
+              .withColumn("n_row", row_number().over(top_wind))
+              .where($"n_row" <= 10).drop("n_row")
+              .distinct.write.mode("overwrite").save(paths("wid1_wid2_pmid") + (if (opt == 0) "1" else ""))
+           wid1_wid2_df = wid1_wid2_df.groupBy("wid1", "wid2").agg(countDistinct(col("pmid")).as("freq"))
 
            logger.info("Saving wikiId_spot and wid1_wid2_freq DataFrame...")
+           // 1. Saving wid1_wid2_freq dataframe
            wid1_wid2_df.write.mode("overwrite").save(paths("wid1_wid2_path") + (if (opt == 0) "1" else ""))
+
+           // 2. Saving wikiID_spot dataframe
            doc_annotate
               .select("wiki_id", "spot").distinct
               .write.mode("overwrite").save(paths("wiki_ids_spot_path") + (if (opt == 0) "1" else ""))
@@ -99,8 +93,37 @@ object Intermediate_dataframe_creation {
            if(opt == 0){
               updateDataFrame(spark, paths("wiki_ids_spot_path"), fs, 2)
               updateDataFrame(spark, paths("wid1_wid2_path"), fs, 1)
+              updateDataFrame(spark, paths("wid1_wid2_pmid"), fs, 3)
               fs.delete(new Path(paths("DocumentsAnnotations_path") + "_filtered1"), true)
            }
         }
+    }
+
+
+    /**
+      * prediction_matrix function compute the BioTG_Score as the product among the following contributes:
+      *   - w_norm :             DT_Hybrid prediction
+      *   - freq:                widx_widy couple frequency
+      *   - tagme_relatedness:   Tagme prediction
+      **/
+    def prediction_matrix(spark: SparkSession, conf_map: mutable.Map[String, Any]):Unit = {
+        import spark.implicits._
+
+        val paths      = conf_map("hdfs_paths").asInstanceOf[mutable.Map[String, String]]
+        val pred_param = conf_map("dt_hybrid_parameters").asInstanceOf[mutable.Map[String, String]]
+        val w_mat      = spark.read.parquet(paths("w_matrix_path") + "/*")
+        var rel_tagme  = spark.read.parquet(paths("tagme_relatedness") + "/*")
+        var freq_assoc = spark.read.parquet(paths("wid1_wid2_path") + "/*")
+
+        rel_tagme  =  rel_tagme.union(rel_tagme.selectExpr("wid2 as wid1", "wid1 as wid2", "tag_relatedness"))
+        freq_assoc =  freq_assoc.union(freq_assoc.selectExpr("wid2 as wid1", "wid1 as wid2", "freq"))
+
+        val top_wind = Window.orderBy($"wid1", desc("BioTG_Score")).partitionBy("wid1")
+        w_mat.join(rel_tagme,  Seq("wid1", "wid2"))
+             .join(freq_assoc, Seq("wid1", "wid2"))
+             .select($"wid1", $"wid2", $"w_norm" * $"tag_relatedness" * $"freq" as "BioTG_Score")
+             .withColumn("n_row", row_number().over(top_wind))
+             .where($"n_row" <= pred_param("top").toInt).drop("n_row")
+             .write.mode("overwrite").parquet(paths("prediction_matrix_path"))
     }
 }

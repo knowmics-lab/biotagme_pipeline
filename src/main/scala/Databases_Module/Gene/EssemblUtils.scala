@@ -15,13 +15,12 @@ object EssemblUtils {
     )
 
     val f_type = Map(
-        "miRBase"     -> "gene-miRNA",
-        "reactome"    -> "gene-pathway",
-        "RefSeq"      -> "gene-RNA",
+        "miRNA"       -> "gene-miRNA",
+        "reactom"     -> "gene-pathway",
+        "refseq"      -> "gene-RNA",
         "RNACentral"  -> "gene-RNA",
         "uniprot"     -> "gene-protein"
     )
-
 
     def getEnsembl(path:String, spark:SparkSession, sel_file: Int):DataFrame = {
         read_tsv(path, spark, req_drop=false, header_gene)
@@ -29,10 +28,10 @@ object EssemblUtils {
 
     def getEnsembl2indexing(Ensembl:DataFrame): DataFrame = {
         Ensembl.selectExpr("Ensembl_gene_id", "gene_name", "gene_name as other_name")
-           //.union(Ensembl
-           //    .selectExpr("Ensembl_gene_id", "gene_name", "gene_synonym as other_name")
-           //    .where(col("other_name").isNotNull)
-           //)
+           .union(Ensembl
+               .selectExpr("Ensembl_gene_id", "gene_name", "gene_synonym as other_name")
+               .where(col("other_name").isNotNull)
+           )
            .distinct
     }
 
@@ -41,12 +40,12 @@ object EssemblUtils {
         root:String, spark:SparkSession, gene_indexing:DataFrame
     ):  DataFrame =
     {
-        val paths = FileSystem.get(spark.sparkContext.hadoopConfiguration).listFiles(new Path(root + "/Essembl"),true)
+        val paths = FileSystem.get(spark.sparkContext.hadoopConfiguration).listFiles(new Path(root),true)
         var ens_rel:DataFrame = null
 
         while(paths.hasNext){
             val path = paths.next.getPath.toString
-            if(!(path.contains("data") || path.toLowerCase().contains("hgnc"))){
+            if(!(path.contains("genes") || path.toLowerCase().contains("hgnc"))){
                 val type_rel = path.split("_")(1).split("\\.")(0)
                 val tmp = spark.read.format("csv")
                     .option("header", "true").option("sep", "\t").option("inferSchema", "true")

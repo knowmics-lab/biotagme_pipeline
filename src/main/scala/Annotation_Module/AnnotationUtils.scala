@@ -20,18 +20,18 @@ object AnnotationUtils {
   /**
    * The following set of user defined spark function are used to transform an array of string or string
    * to an array of bytes array or byte array. Basically:
-   *   - arrayString2arrayBytes: convert an array of string to an array of bytes array
-   *   - arrayBytes2String: convert an array of bytes to a string
-   *   - string2arrayBytes: convert a string to an array of bites
-   *   - when_other: return the transformed value of each row of the table
+   *   - arrayString2arrayBytes : convert an array of string to an array of bytes array
+   *   - arrayBytes2String      : convert an array of bytes to a string
+   *   - string2arrayBytes      : convert a string to an array of bites
+   *   - when_other             : return the transformed value of each row of the table
    * Since the parquet file only support the utf8 format, a transformation from string to array of bites
    * is necessary to avoid data format exception
    **/
   val arrayString2arrayBytes: UserDefinedFunction = udf((str_vet: Seq[String])   =>  str_vet.map(str => str.getBytes()))
-  val arrayBytes2String: UserDefinedFunction      = udf((arrayByte:Array[Byte])  =>  new String(arrayByte))
-  val string2arrayByte_udf: UserDefinedFunction   = udf((str:String)             =>  str.getBytes)
+  val arrayBytes2String     : UserDefinedFunction = udf((arrayByte:Array[Byte])  =>  new String(arrayByte))
+  val string2arrayByte_udf  : UserDefinedFunction = udf((str:String)             =>  str.getBytes)
 
-  def when_other(_col: Column, opt:Int) = {
+  def when_other(_col: Column, opt:Int): Column = {
       when(_col.isNull, null).otherwise(
           opt match {
                  case 0 => string2arrayByte_udf(_col)             // string to array of bites conversion
@@ -42,10 +42,10 @@ object AnnotationUtils {
   /**
    * The getNumPartition has been defined to get the appropriate number of partition to our documents DataFrame
    * on the basis of the following parameters:
-   *   - n_row: number of documents
-   *   - n_bytes_doc: average number of bytes per document. This value was set to 11571 thanks to a statistic analysis
+   *   - n_row       : number of documents
+   *   - n_bytes_doc : average number of bytes per document. This value was set to 11571 thanks to a statistic analysis
    *   - executor_mem: memory percentage assigned to each spark executor
-   *   - total_cores: CPUs assigned to each spark executor
+   *   - total_cores : CPUs assigned to each spark executor
    **/
    def getNumPartition(df:DataFrame, spark:SparkSession):Int = {
        // DataFrame and document information
@@ -78,10 +78,10 @@ object AnnotationUtils {
        val tagme_config = parameters
        // HTTP request body configuration
        val entityPost = new util.ArrayList[NameValuePair]
-       entityPost.add(new BasicNameValuePair("gcube-token",tagme_config("token")))
-       entityPost.add(new BasicNameValuePair("text", text))
-       entityPost.add(new BasicNameValuePair("lang",tagme_config("language")))
-       entityPost.add(new BasicNameValuePair("epsilon",tagme_config("epsilon")))
+       entityPost.add(new BasicNameValuePair("gcube-token",       tagme_config("token")))
+       entityPost.add(new BasicNameValuePair("text",              text))
+       entityPost.add(new BasicNameValuePair("lang",              tagme_config("language")))
+       entityPost.add(new BasicNameValuePair("epsilon",           tagme_config("epsilon")))
        entityPost.add(new BasicNameValuePair("include_categories",tagme_config("include_wikicategory")))
 
        // HTTP request building and setting

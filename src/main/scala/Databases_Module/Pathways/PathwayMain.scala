@@ -1,23 +1,23 @@
 package Databases_Module.Pathways
 
 import Databases_Module.DatabasesUtilsTrait
-import Databases_Module.miRNA.miRNAMain.get_element_path
 import org.apache.spark.sql.SparkSession
 import PathBankUtils._
 import ReactomeUtils._
 import Panther._
 import org.apache.spark.sql.functions.{col, collect_set}
+import scala.collection.mutable
 
-import scala.xml.Elem
+
 
 object PathwayMain extends PathwayMainTrait with DatabasesUtilsTrait{
-   def get_pathway_dataframes(spark: SparkSession, conf_xml: Elem): Unit = {
-       val paths = get_element_path(conf_xml, "hdfs_paths", "Pathways")
+   def get_pathway_dataframes(spark: SparkSession, pathway_conf: mutable.Map[String, Any]): Unit = {
+       val paths = pathway_conf("Pathway").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
 
        /** PathBank **/
        val path_bank_paths    = paths("PathBank_path")
        val path_bank_root     = path_bank_paths("root_path")
-       val path_bank_info     = getPathBank(path_bank_root + "/" + path_bank_paths("pathways_file"), spark, 1)
+       val path_bank_info     = getPathBank(path_bank_root + "/" + path_bank_paths("proteins_pathwats_file"), spark, 1)
        val pbank4filtering    = getPathway2Indexing(path_bank_info, "SMPDB_ID").persist
 
 
@@ -35,7 +35,7 @@ object PathwayMain extends PathwayMainTrait with DatabasesUtilsTrait{
 
 
        /** Indexing **/
-       val saving_file = "/" + path_bank_root.split("/")(1)
+       val saving_file = paths("pathway_metadata")("path")
        pathway_index   = create_element_indexing("Pathway_name","PATHWAY", pbank4filtering, reactome4filtering, panther4filtering)
        pathway_index.write.mode("overwrite").parquet(saving_file + "/Pathway_indexing")
 

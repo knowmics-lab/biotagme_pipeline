@@ -6,11 +6,12 @@ import mirBaseUtils._
 import mirCancerUtils._
 import mirTarBaseUtils._
 import mirHMDD._
-import scala.xml.Elem
+import scala.collection.mutable
+
 
 object miRNAMain extends miRNAMainTrait with DatabasesUtilsTrait {
-    def get_miRNA_dataframes(spark: SparkSession, conf_xml: Elem): Unit = {
-        val paths = get_element_path(conf_xml, "hdfs_paths", "miRNA")
+    def get_miRNA_dataframes(spark: SparkSession, mirna_conf: mutable.Map[String, Any]): Unit = {
+        val paths = mirna_conf("miRNA").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
 
         // ========================================================================================================== //
         // ============================================== miRNA Databases =========================================== //
@@ -41,7 +42,7 @@ object miRNAMain extends miRNAMainTrait with DatabasesUtilsTrait {
         // ========================================================================================================== //
         // ================================================ Processing ============================================== //
         /** Indexing **/
-        val saving_path = "/" + HMDD_rpath.split("/")(1)
+        val saving_path = paths("miRNA_metadata")("path")
         miRNA_index     = create_element_indexing("miRNA_name","miRNA", mirBase4filt, mirCan4filt, mirTarBase4filt, HMDD4filt)
         miRNA_index.write.mode("overwrite").parquet(saving_path + "/miRNA_index")
 

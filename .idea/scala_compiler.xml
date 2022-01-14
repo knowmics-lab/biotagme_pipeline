@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="BioTagME_final,biotagme_final_5836" />
+    <profile name="sbt 1" modules="biotagme_pipeline_598">
+      <option name="postfixOps" value="true" />
+    </profile>
+    <profile name="sbt 2" modules="BioTagME_final" />
   </component>
 </project>

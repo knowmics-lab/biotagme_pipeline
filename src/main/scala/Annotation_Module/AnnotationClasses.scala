@@ -6,14 +6,14 @@ package Annotation_Module
  **/
 case class Annotation
 (
-    spot:String,
-    start:Option[Int],
-    link_probability:Option[Double],
-    rho:Option[Double],
+    spot              :String,
+    start             :Option[Int],
+    link_probability  :Option[Double],
+    rho               :Option[Double],
     dbpedia_categories:Option[List[String]],
-    end:Option[Int],
-    id:Option[Long],
-    title:Option[String]
+    end               :Option[Int],
+    id                :Option[Long],
+    title             :Option[String]
 )
 
 case class Annotations

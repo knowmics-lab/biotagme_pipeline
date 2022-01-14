@@ -3,12 +3,12 @@ package Databases_Module.mRNA
 import Databases_Module.DatabasesUtilsTrait
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import RefSeqUtils._
+import scala.collection.mutable
 
-import scala.xml.Elem
 
 object mRNAMain extends mRNAMainTrait with DatabasesUtilsTrait{
-      def get_mRNA_dataframes(spark: SparkSession, conf_xml: Elem): Unit = {
-          val paths = get_element_path(conf_xml, "hdfs_paths", "mRNA")
+      def get_mRNA_dataframes(spark: SparkSession, mrna_conf: mutable.Map[String, Any]): Unit = {
+          val paths = mrna_conf("mRNA").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
 
           val root: String      = paths("RefSeq_path")("root_path")
           val mRNA: DataFrame   = getRefSeq(root + "/*", spark)
@@ -18,12 +18,13 @@ object mRNAMain extends mRNAMainTrait with DatabasesUtilsTrait{
               .persist()
 
           /** Indexing **/
+          val saving_path = paths("mRNA_metadata")("path")
           mRNA_index = create_element_indexing("mRNA_name", "mRNA", mRNA4indexing)
-          mRNA_index.write.mode("overwrite").parquet(root + "/mRNA_indexing")
+          mRNA_index.write.mode("overwrite").parquet(saving_path + "/mRNA_indexing")
 
           /** Relationships **/
           create_relationships(mRNA, "RNA_id", "mRNA_name", mRNA_index, "mRNA-gene", "gene_name", "")
-             .write.mode("overwrite").parquet(root + "/mRNA_relationships")
+             .write.mode("overwrite").parquet(saving_path + "/mRNA_relationships")
 
           mRNA4indexing.unpersist; mRNA_index.unpersist
       }

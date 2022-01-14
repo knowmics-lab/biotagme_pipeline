@@ -5,11 +5,12 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import LNCpediaUtils._
 import mirCodeUtils._
+import scala.collection.mutable
 import scala.xml.Elem
 
 object LNCMain extends LNCMainTrait with DatabasesUtilsTrait {
-  def get_LNC_dataframes(spark: SparkSession, conf_xml: Elem): Unit = {
-      val paths = get_element_path(conf_xml, "hdfs_paths", "lnc")
+  def get_LNC_dataframes(spark: SparkSession, lnc_conf: mutable.Map[String, Any]): Unit = {
+      val paths = lnc_conf("lnc").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
 
 
       /** LNCBook **/
@@ -36,16 +37,17 @@ object LNCMain extends LNCMainTrait with DatabasesUtilsTrait {
 
 
       /** Indexing **/
-      val saving_rpath = "/" + mir_rpath.split("/")(1)
+      val saving_rpath = paths("lnc_metadata")("path")
       LNC_indexing     = create_element_indexing("LNC_name", "LNC", LNCP4Index, LNCmC4filtering).persist
       LNC_indexing.write.mode("overwrite").save(saving_rpath + "/LNC_indexing")
 
 
       /** Relationships **/
       create_LCPedia_rel(create_relationships, LNC_indexing, LNCP4Index, LNCP_h37, LNCP_h38)
-         .union(create_mirCode_rel(create_relationships, LNC_indexing, LNCmC4filtering , LNCmC))
-         .groupBy("NAME1","IDX1","NAME2","IDX2","TYPE").agg(collect_set(col("REFERENCE")).as("REFERENCE"))
-         .write.mode("overwrite").save(saving_rpath + "/LNC_relationships")
+          .union(create_mirCode_rel(create_relationships, LNC_indexing, LNCmC4filtering , LNCmC))
+          .withColumn("REFERENCE", miRNA_reference_elaboration(col("REFERENCE")))
+          .groupBy("NAME1","IDX1","NAME2","IDX2","TYPE").agg(collect_set(col("REFERENCE")).as("REFERENCE"))
+          .write.mode("overwrite").save(saving_rpath + "/LNC_relationships")
 
   }
 }

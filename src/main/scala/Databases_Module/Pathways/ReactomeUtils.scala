@@ -3,20 +3,22 @@ package Databases_Module.Pathways
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions._
 import Databases_Module.Drug.ChEBIUtils.read_tsv
+import scala.collection.mutable
+
 
 object ReactomeUtils {
-    val header_pathways = Seq(
+    private[this] val header_pathways = Seq(
         "_c0        as Reactome_ID",
         "lower(_c1) as Pathway_name",
         "_c2        as species"
     )
 
-    val header_pathways_rel = Seq(
+    private[this] val header_pathways_rel = Seq(
         "_c0 as Reactome_ID1",
         "_c1 as Reactome_ID2"
     )
 
-    val header_pathways_elements_relat = Seq(
+    private[this] val header_pathways_elements_relat = Seq(
         "_c2        as Element_name",
         "_c3        as Reactome_ID",
         "lower(_c5) as Pathway_name",
@@ -41,7 +43,7 @@ object ReactomeUtils {
 
 
     def create_reactom_relationship(
-        path_files:Map[String, String], spark:SparkSession, pathway_indexing:DataFrame,
+        path_files: mutable.Map[String, String], spark:SparkSession, pathway_indexing:DataFrame,
         elem_oelem: (DataFrame,String,String,DataFrame,String,String,String) => DataFrame
     ):  DataFrame = {
 
@@ -59,7 +61,7 @@ object ReactomeUtils {
 
         var reactome_rel: DataFrame = null
         paths.foreach(path => {
-            val source   = path.split("2")(0)
+            val source   = type_relation(path)
             var df       = getReactome(path, spark, flag = 2, source=source)
 
             df = elem_oelem(
@@ -71,4 +73,16 @@ object ReactomeUtils {
         reactome_rel
     }
 
+
+    private def type_relation(path: String):String  = {
+        var type_el = ""
+        if(path.toLowerCase().contains("mirbase"))
+           type_el = "miRBase"
+        else if(path.toLowerCase().contains("ensembl"))
+           type_el = "Ensembl"
+        else if(path.toLowerCase().contains("uniprot"))
+           type_el = "UniProt"
+
+        type_el
+    }
 }

@@ -66,6 +66,10 @@ object UpdateProcedure extends UpdateTrait {
          }
          while(n_articles_downloaded < n_articles_todownload)
          val last_upd_path = System.getProperty("user.dir") + "/src/main/configuration/last_update.txt"
-         Files.write(Paths.get(last_upd_path), dateFormat.format(timestamp).getBytes)
+
+         if(pubMed_info("end_update_date") != "3000")
+            Files.write(Paths.get(last_upd_path), pubMed_info("end_update_date").getBytes())
+         else
+            Files.write(Paths.get(last_upd_path), dateFormat.format(timestamp).getBytes)
      }
 }

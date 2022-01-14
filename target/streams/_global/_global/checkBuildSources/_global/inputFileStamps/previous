@@ -1,1 +1,1 @@
-["sbt.Task[scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]",{"hashes":[["/home/antonio/Scrivania/BioTagME_final/build.sbt","e4d1ec3a15e4b59fd6a6ffcc589410e54a22f4d1"]],"lastModifiedTimes":[]}]
+["sbt.Task[scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]",{"hashes":[["/home/antonio/Scrivania/BioTagme_final/biotagme_pipeline/build.sbt","e3315284c33949fcee46deb0c809d0ed8fa91c56"]],"lastModifiedTimes":[]}]

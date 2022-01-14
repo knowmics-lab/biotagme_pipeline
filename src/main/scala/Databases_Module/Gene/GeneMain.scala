@@ -6,12 +6,14 @@ import EssemblUtils._
 import HGNCUtils._
 import CIVICUtils._
 import Databases_Module.DatabasesUtilsTrait
-import scala.xml.Elem
+import scala.collection.mutable
+
 
 object GeneMain extends DatabasesUtilsTrait {
     var gene_indexing: DataFrame = _
-    def get_Genes_dataframes(spark: SparkSession, conf_xml:Elem): Unit = {
-        val paths          = get_element_path(conf_xml, "hdfs_paths", "gene")
+    def get_Genes_dataframes(spark: SparkSession, gene_conf: mutable.Map[String, Any]): Unit = {
+        val paths = gene_conf("gene").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
+
 
         /** Essembl **/
         val ens_paths      = paths("ensembl_path")
@@ -19,19 +21,22 @@ object GeneMain extends DatabasesUtilsTrait {
         val Ensembl_db     = getEnsembl(ens_root + "/" + ens_paths("gene_file"), spark, sel_file=0)
         val Ens4indexing   = getEnsembl2indexing(Ensembl_db).persist
 
+
         /** HGNC **/
         val hgnc_root      = paths("hgnc_path")("root_path")
-        val HGNC_db        = getHGNC(hgnc_root + "/HGNC/*", spark)
+        val HGNC_db        = getHGNC(hgnc_root + "/*", spark)
         val HGNC4indexing  = get_HGNC_df2indexing(HGNC_db).persist
 
-        /** CIVIC */
+
+        /** CIVIC **/
         val civ_paths      = paths("civic_path")
         val civ_root       = civ_paths("root_path")
         val CIVIC_db       = getCIVIC(civ_root + "/" + civ_paths("gene_file"), spark, 1)
         val CIVIC4indexing = getCIVIC4Indexing(CIVIC_db)
 
+
         /** Indexing **/
-        val sav_root_path = "/" + hgnc_root.split("/")(1)
+        val sav_root_path = paths("gene_metadata")("path")
         gene_indexing = create_element_indexing("gene_name", "GENE", Ens4indexing, HGNC4indexing, CIVIC4indexing).persist
         gene_indexing.write.mode("overwrite").save(sav_root_path + "/gene_indexing")
 
@@ -44,8 +49,8 @@ object GeneMain extends DatabasesUtilsTrait {
            .agg(collect_set(col("REFERENCE")).as("REFERENCE"))
            .write.mode("overwrite").parquet(sav_root_path + "/gene_relationships")
 
-
         gene_indexing.unpersist(); Ens4indexing.unpersist(); HGNC4indexing.unpersist(); CIVIC4indexing.unpersist()
+
 
     }
 }

@@ -67,7 +67,6 @@ object DiseaseCartUtils {
     }
     def diseaseCart2indexing(df: DataFrame) : DataFrame = cart_select(df,0).union(cart_select(df,1))
 
-
     def get_card_disease_disease(df:DataFrame): DataFrame = {
          df.select(
             col("features.id")(0).as("dc_id1"),

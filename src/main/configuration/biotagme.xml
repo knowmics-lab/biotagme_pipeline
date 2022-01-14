@@ -101,7 +101,7 @@
                 the today data.
             </description>
             <value>
-                2020/04/30
+                2020/07/22
             </value>
         </end_update_date>
     </pubmed_parameters>
@@ -126,24 +126,41 @@
     </dt_hybrid_parameters>
 
     <hdfs_paths>
+        <main_directory>
+            <descrizione>
+                Ditectory containing all biotagme folders
+            </descrizione>
+            <value>
+                /BioDatabases
+            </value>
+        </main_directory>
         <!-- path used during the updating operations -->
+        <sentence_sql_path>
+            <decription>
+                The hdfs path where is stored the sql files contains all the PMIDs' sentences until a certain data
+            </decription>
+            <value>
+                /BioDatabases/Semmedb
+            </value>
+        </sentence_sql_path>
         <newDocuments_path>
             <descrizione>
                 The hdfs path in which are stored all the json files containing the new documents' abstract and title to
                 annotate
             </descrizione>
             <value>
-                /Articles_update
+                /BioDatabases/Articles_update_test
             </value>
         </newDocuments_path>
         <!-- path used during the annotation of the whole documents dataset -->
         <allDocuments_path>
             <description>
                 The hdfs path in which are stored the json file containing all the Pubmed documents' title and abstract
-                until june 2017
+                until January 2020
+                <!-- /BioDatabases/Article_jsonFormat_test -->
             </description>
             <value>
-                /Article_jsonFormat
+                /BioDatabases/Articles_update
             </value>
         </allDocuments_path>
         <!-- -->
@@ -152,7 +169,7 @@
                 The hdfs path in which are stored the annotations related to the new documents downloaded from Pubmed
             </description>
             <value>
-                /Documents_Annotations
+                /BioDatabases/Documents_Annotations_test
             </value>
         </DocumentsAnnotations_path>
         <!-- -->
@@ -161,7 +178,7 @@
                 The hdfs path in which are stored the parquet files containing all wikipedia biology categories.
             </description>
             <value>
-                /categories_biotgm
+                /BioDatabases/categories_biotgm
             </value>
         </categories_path>
         <!-- -->
@@ -170,7 +187,7 @@
                 The hdfs path in which are stored the association pmid-wid
             </description>
             <value>
-                /pmids_wiki_ids_path
+                /BioDatabases/pmids_wiki_ids_path
             </value>
         </pmids_wiki_ids_path>
         <!-- -->
@@ -179,7 +196,7 @@
                 The hdfs path in which are stored the association wid-spot
             </description>
             <value>
-                /wiki_ids_spot_path
+                /BioDatabases/wiki_ids_spot_path_test
             </value>
         </wiki_ids_spot_path>
         <!-- -->
@@ -188,9 +205,17 @@
                 The hdfs path in which is stored the w_matrix (DT-Hybrid)
             </description>
             <value>
-                /w_matrix_path
+                /BioDatabases/w_matrix_path_test
             </value>
         </w_matrix_path>
+        <prediction_matrix_path>
+            <description>
+                The hdfs path in which is stored the prediction matrix
+            </description>
+            <value>
+                /BioDatabases/prediction_matrix_test
+            </value>
+        </prediction_matrix_path>
         <!-- -->
         <wid1_wid2_path>
             <description>
@@ -198,28 +223,45 @@
                 widj are two wiki id of two different terms obtained during the annotation procedures
             </description>
             <value>
-                /widi_widj_association
+                /BioDatabases/widi_widj_association_test
             </value>
         </wid1_wid2_path>
+        <wid1_wid2_pmid>
+            <description>
+                The hdfs path in which are stored the parquet files containing the widi-widj-pmid association. where widi and
+                widj are two wiki id of two different terms obtained during the annotation procedures
+            </description>
+            <value>
+                /BioDatabases/widi_widj_pmid_association_test
+            </value>
+        </wid1_wid2_pmid>
         <!-- -->
         <tagme_relatedness>
             <description>
                 The hdfs path in which is stored the relatedness between two wiki ids
             </description>
             <value>
-                /tagme_relatedness
+                /BioDatabases/tagme_relatedness_test
             </value>
         </tagme_relatedness>
 
         <!-- DISEASE PATHS -->
         <disease>
             <!-- DisGeNET -->
+            <disease_metadata>
+                <description>
+                    The hdfs path in which are stored all the disease dataset
+                </description>
+                <path>
+                    /BioDatabases/Disease
+                </path>
+            </disease_metadata>
             <disgenet_path>
                 <description>
                     The hdfs path in which is stored the disgenet tsv file containing diseases information
                 </description>
                 <root_path>
-                    /Disease/DisGeNet
+                    /BioDatabases/Disease/DisGeNET
                 </root_path>
                 <gene_disease>
                     all_gene_disease_associations.tsv
@@ -237,7 +279,7 @@
                     The hdfs path where the disease ontology is stored
                 </description>
                 <root_path>
-                    /Disease/DiseaseCard
+                    /BioDatabases/Disease/Disease_Ontology
                 </root_path>
             </disease_ontology_path>
             <!-- Disease Enhancer -->
@@ -246,7 +288,7 @@
                     The hdfs path where the disease enhancer database is stored
                 </description>
                 <root_path>
-                    /Disease/DiseaseEnhancer
+                    /BioDatabases/Disease/Disease_Enhancer
                 </root_path>
                 <disease_info>
                     enh2disease-1.0.2.txt
@@ -256,16 +298,24 @@
 
         <!-- DRUG PATHS-->
         <drug>
+            <drug_metadata>
+                <description>
+                    The hdfs path in which are stored all the drug dataset
+                </description>
+                <path>
+                    /BioDatabases/Drug
+                </path>
+            </drug_metadata>
             <!-- DrugBank -->
             <drugbank_path>
                 <description>
-                    The hdfs path in which is stored the drugbanck csv file containing drugs information
+                    The hdfs path in which is stored the drugbanck xml file containing drugs information
                 </description>
                 <root_path>
-                    /Drug/DrugBank
+                    /BioDatabases/Drug/DrugBank
                 </root_path>
                 <drug_file>
-                    drugBank_db.xml
+                    full database.xml
                 </drug_file>
             </drugbank_path>
             <!-- PharmGKB -->
@@ -274,20 +324,28 @@
                     The hdfs path in which is stored the pharmkb csv file containing drugs information
                 </description>
                 <root_path>
-                    /Drug/PharmGKB
+                    /BioDatabases/Drug/PharmGKB
                 </root_path>
             </pharmkb_path>
         </drug>
 
         <!-- GENE PATHS -->
         <gene>
+            <gene_metadata>
+                <description>
+                    The hdfs path in which are stored all the gene dataset
+                </description>
+                <path>
+                    /BioDatabases/Gene
+                </path>
+            </gene_metadata>
             <!-- HGNC -->
             <hgnc_path>
                 <description>
                     The hdfs path in which is stored the hgnc txt file containing genes information
                 </description>
                 <root_path>
-                    /Gene/HGNC
+                    /BioDatabases/Gene/HGNC
                 </root_path>
             </hgnc_path>
             <!-- Ensembl -->
@@ -296,18 +354,19 @@
                     The hdfs path in which is stored the ensembl file containing genes information
                 </description>
                 <root_path>
-                    /Gene/Essembl
+                    /BioDatabases/Gene/Ensembl
                 </root_path>
                 <gene_file>
-                    gene_data.txt
+                    ensembl_genes.txt
                 </gene_file>
             </ensembl_path>
+            <!-- CIVIC -->
             <civic_path>
                 <description>
                     The hdfs path in which is stored the civic file containing genes information
                 </description>
                 <root_path>
-                    /Gene/CIVIC
+                    /BioDatabases/Gene/CIVIC
                 </root_path>
                 <gene_file>
                     nightly-ClinicalEvidenceSummaries.tsv
@@ -317,13 +376,21 @@
 
         <!-- LNC -->
         <lnc>
+            <lnc_metadata>
+                <description>
+                    The hdfs path in which are stored all the LNC dataset
+                </description>
+                <path>
+                    /BioDatabases/LNC
+                </path>
+            </lnc_metadata>
             <!-- LNCPedia -->
             <lnc_pedia>
                 <description>
                     The hdfs path in which is stored the lncpedia's gtf files containing lnc information
                 </description>
                 <root_path>
-                    /LNC/LNCpedia
+                    /BioDatabases/LNC/LNCPedia
                 </root_path>
                 <hg38_path>
                     lncipedia_5_2_hg38.gtf
@@ -338,20 +405,28 @@
                     The hdfs path in which is stored the mircode's txt file containing lnc information
                 </description>
                 <root_path>
-                    /LNC/mirCode
+                    /BioDatabases/LNC/mirCode
                 </root_path>
             </mirCode_path>
         </lnc>
 
         <!-- miRNA PATHS -->
         <miRNA>
+            <miRNA_metadata>
+                <description>
+                    The hdfs path in which are stored all the miRNA dataset
+                </description>
+                <path>
+                    /BioDatabases/miRNA
+                </path>
+            </miRNA_metadata>
             <!-- mirBase -->
             <mirbase_path>
                 <description>
                     The hdfs path in which is stored the mirBase's txt files containing miRNA information
                 </description>
                 <root_path>
-                    /miRNA/mirbase
+                    /BioDatabases/miRNA/mirBase
                 </root_path>
                 <mirna_file>
                     mirna.txt
@@ -369,7 +444,7 @@
                     The hdfs path in which is stored the mirCancer's txt file containing miRNA information
                 </description>
                 <root_path>
-                    /miRNA/mirCancer
+                    /BioDatabases/miRNA/mirCancer
                 </root_path>
             </mirCancer_path>
             <!--  mirTarBase -->
@@ -378,7 +453,7 @@
                     The hdfs path in which is stored the mirTarBase's csv file containing miRNA information
                 </description>
                 <root_path>
-                    /miRNA/mirTarBase
+                    /BioDatabases/miRNA/mirTarBase
                 </root_path>
             </mirTarBase_path>
             <!--  HMDD -->
@@ -387,57 +462,76 @@
                     The hdfs path in which is stored the HMDD's txt file containing miRNA information
                 </description>
                 <root_path>
-                    /miRNA/HMDD
+                    /BioDatabases/miRNA/HMDD
                 </root_path>
             </HMDD_path>
         </miRNA>
 
         <!-- mRNA -->
         <mRNA>
+            <mRNA_metadata>
+                <description>
+                    The hdfs path in which are stored all the mRNA dataset
+                </description>
+                <path>
+                    /BioDatabases/mRNA
+                </path>
+            </mRNA_metadata>
             <!-- RefSeq -->
             <RefSeq_path>
                 <description>
                     The hdfs path in which is stored the RefSeq's fna files containing mRNA information
                 </description>
                 <root_path>
-                    /RNA
+                    /BioDatabases/mRNA/RefSeq
                 </root_path>
             </RefSeq_path>
         </mRNA>
 
         <!-- PROTEIN -->
         <Protein>
+            <protein_metadata>
+                <description>
+                    The hdfs path in which are stored all the protein dataset
+                </description>
+                <path>
+                    /BioDatabases/Protein
+                </path>
+            </protein_metadata>
             <UniProtKB_path>
                 <description>
                     The hdfs path in which is stored the UniprotKB file containing Protein information
                 </description>
                 <root_path>
-                    /Protein/UniprotKB
+                    /BioDatabases/Protein/UniprotKB
                 </root_path>
             </UniProtKB_path>
-        <string_path>
-            <description>
-                The hdfs path in which is stored the aliases, names of the protein as well as the file containing the whole string network
-            </description>
-            <value>
-                /PROTEIN/STRING
-            </value>
-        </string_path>
-        <string_species>
-            <value>
-                9606
-            </value>
-        </string_species>
+            <String>
+                <description>
+                    The hdfs path in which is stored the aliases, names of the protein as well as the file containing the whole string network
+                </description>
+                <root_path>
+                    /BioDatabases/STRING
+                </root_path>
+            </String>
         </Protein>
 
         <!-- Pathway -->
         <Pathway>
+            <pathway_metadata>
+                <description>
+                    The hdfs path in which are stored all the pathway dataset
+                </description>
+                <path>
+                    /BioDatabases/Pathway
+                </path>
+            </pathway_metadata>
             <PathBank_path>
                 <description>
                     The hdfs path in which is stored the PathBank csv files containing Pathways information
                 </description>
                 <root_path>
-                    /Pathways/PathBank
+                    /BioDatabases/Pathway/PathBank
                 </root_path>
                 <pathways_file>
                     pathbank_pathways.csv
@@ -454,7 +548,7 @@
                     The hdfs path in which is stored the Reactome txt files containing Pathways information
                 </description>
                 <root_path>
-                    /Pathways/Reactom
+                    /BioDatabases/Pathway/Reactome
                 </root_path>
                 <pathways_file>
                     ReactomePathways.txt
@@ -477,30 +571,30 @@
                     The hdfs path in which is stored the Panther txt files containing Pathways information
                 </description>
                 <root_path>
-                    /Pathways/Panther
+                    /BioDatabases/Pathway/Panther
                 </root_path>
             </Panther>
         </Pathway>
 
-        <!-- GO -->
-        <go_path>
-            <description>
-                The hdfs path in which is stored the go obo file containing ontology information
-            </description>
-            <value>
-                /ONTOLOGY/GO
-            </value>
-        </go_path>
-
         <!-- ENZYME -->
-        <enzyme_path>
-            <description>
-                The hdfs path in which is stored the csv file containing enzyme information
-            </description>
-            <value>
-                /ENZYME/KEGG
-            </value>
-        </enzyme_path>
+        <Enzyme>
+            <enzyme_metadata>
+                <description>
+                    The hdfs path in which are stored all the pathway dataset
+                </description>
+                <path>
+                    /BioDatabases/Enzyme
+                </path>
+            </enzyme_metadata>
+            <Brenda_path>
+                <description>
+                    The hdfs path in which is stored the file containing enzyme information
+                </description>
+                <root_path>
+                    /BioDatabases/Enzyme/Brenda
+                </root_path>
+            </Brenda_path>
+        </Enzyme>
 
         <!-- NETWORKS DATA -->
         <network_data>
@@ -508,7 +602,7 @@
                 The hdfs path in which will be stored the network data
             </description>
             <value>
-                /NETWORK_DATA
+                /BioDatabases/NETWORK_DATA_test
             </value>
         </network_data>
     </hdfs_paths>

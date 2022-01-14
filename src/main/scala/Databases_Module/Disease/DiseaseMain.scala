@@ -1,23 +1,23 @@
 package Databases_Module.Disease
 
 import Databases_Module.DatabasesUtilsTrait
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import DisGenNetUtils._
 import DiseaseCartUtils._
 import DiseaseEnhancer._
+import scala.collection.mutable
 
-import scala.xml.Elem
 
 object DiseaseMain extends DiseaseMainTrait with DatabasesUtilsTrait {
-       override def get_Diseases_dataframes(spark: SparkSession, conf_xml_obj: Elem): Unit = {
-           val paths = get_element_path(conf_xml_obj, "hdfs_paths", "dis")
+       override def get_Diseases_dataframes(spark: SparkSession, disease_conf: mutable.Map[String, Any]): Unit = {
+           val paths = disease_conf("disease").asInstanceOf[mutable.Map[String, mutable.Map[String, String]]]
 
 
            /** DisGenNet **/
            val dgn_files              = paths("disgenet_path")
            val dgn_path_root          = dgn_files("root_path")
-           val genes_diseases_dgn     = getDisGenNet(dgn_path_root + "/" + dgn_files("gene_disease"),    spark, 1)
+           val genes_diseases_dgn     = getDisGenNet(dgn_path_root + "/" + dgn_files("gene_disease"),    spark, 0)
            val variants_diseases_dgn  = getDisGenNet(dgn_path_root + "/" + dgn_files("variant_disease"), spark, 1)
            var diseases_diseases_dgn  = getDisGenNet(dgn_path_root + "/" + dgn_files("disease_disease"), spark, 2)
                diseases_diseases_dgn  = remove_phenotypes(genes_diseases_dgn, variants_diseases_dgn, diseases_diseases_dgn, 2)
@@ -37,7 +37,7 @@ object DiseaseMain extends DiseaseMainTrait with DatabasesUtilsTrait {
            val de4filer         = get_disEnh2indexing(disease_enhancer).persist
 
            /** Indexing **/
-           val root          = "/" + de_root.split("/")(1)
+           val root          = paths("disease_metadata")("path")
            disease_indexind  = create_element_indexing("disease_name", "DISEASE",dc4filter, dgn4filter,de4filer).persist
            disease_indexind.write.mode("overwrite").parquet(root + "/disease_indexing")
 

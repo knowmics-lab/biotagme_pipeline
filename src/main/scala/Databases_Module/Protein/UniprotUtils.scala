@@ -6,7 +6,7 @@ import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.apache.spark.sql.functions._
 
 object UniprotUtils {
-    val header_uniprot = Seq(
+    val header_uniprot: Seq[String] = Seq(
         "`Entry`                          as UniProt_ID",
         "`Entry name`                     as uniprot_entry_name",
         "`Status`",
@@ -14,7 +14,7 @@ object UniprotUtils {
         "`Organism`",
         "`Gene names  (synonym )`         as gene_synonyms",
         "`Gene names  (primary )`         as gene_name",
-        "`ChEBI IDs`                      as chEBI_ids",
+        //"`ChEBI IDs`                      as chEBI_ids",
         "`Cross-reference (RefSeq)`       as RefSeq_id",
         "`Cross-reference (BioGrid)`      as BioGrid_id",
         "`Cross-reference (STRING)`       as STRING_id",
@@ -28,6 +28,7 @@ object UniprotUtils {
     )
 
 
+
     /**
      * getUniprot function is used to create a spark DataFrame containing all uniprot proteins data
      **/
@@ -36,6 +37,7 @@ object UniprotUtils {
         read_tsv(path: String, spark, req_drop=false, header_uniprot)
            .where($"Organism".contains("Homo sapiens") && !$"Status".contains("unreviewed"))
     }
+
 
 
     /**
@@ -60,9 +62,11 @@ object UniprotUtils {
               ).withColumn("protein_name", $"protein_names"(0))
 
         unip_elab.select($"UniProt_ID", $"protein_name", explode($"protein_names").as("other_name"))
-              .union(unip_elab.select($"UniProt_ID", $"protein_name", explode(split($"gene_names"," ")).as("other_name")))
+              .union(unip_elab.select($"UniProt_ID", $"protein_name", explode(split($"gene_names"," "))
+              .as("other_name")))
               .withColumn("other_name", lower($"other_name")).distinct
     }
+
 
 
     /**
@@ -75,7 +79,7 @@ object UniprotUtils {
     ):  DataFrame =
     {
         val maps = Map(
-            "RefSeq_id"    -> "protein-RNA",
+            "RefSeq_id"    -> "protein-mRNA",
             "STRING_id"    -> "protein-string",
             "DrugBank_id"  -> "protein-drug",
             "Ensembl_id"   -> "protein-gene",
@@ -93,7 +97,27 @@ object UniprotUtils {
             uniprot_relationships = if(uniprot_relationships == null) tmp else uniprot_relationships.union(tmp)
         })
 
-        uniprot_relationships
+        uniprot_relationships.withColumn("REFERENCE", explode(reference_elaboration(col("REFERENCE"))))
     }
 
+
+
+    /**
+      * Since the disease reference id is not prefixed with C0..., the following user defined function will be
+      * used to add such prefix. In addition, the semicolumn-separated external ids are split in a vector of ids
+      **/
+    val reference_elaboration: UserDefinedFunction = udf((id:String) => {
+        val id_components = id.split(":")
+        var new_id = id_components(1).split(";")
+
+        if(id_components.length > 1 && id_components(0).toLowerCase.contains("disge"))
+           new_id = new_id.filter(id_dge => id_dge != "")
+              .map(id_dge => id_components(0) + ":C" + Array.fill(7 - id_dge.length)(0).mkString("") + id_dge)
+        else
+           new_id = new_id.filter(id_dge => id_dge != "")
+              .map(id_dge => id_components(0) + ":" + id_dge.split(" \\[")(0))
+
+
+        new_id
+    })
 }

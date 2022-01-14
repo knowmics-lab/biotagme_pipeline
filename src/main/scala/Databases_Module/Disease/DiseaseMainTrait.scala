@@ -1,6 +1,8 @@
 package Databases_Module.Disease
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
+
+import scala.collection.mutable
 import scala.xml.{Elem, Node}
 
 trait DiseaseMainTrait {
@@ -51,5 +53,5 @@ trait DiseaseMainTrait {
       * @return Unit
       *
       **/
-     def get_Diseases_dataframes(spark: SparkSession, conf_xml_obj: Elem): Unit = {}
+     def get_Diseases_dataframes(spark: SparkSession, disease_conf: mutable.Map[String, Any]): Unit = {}
 }

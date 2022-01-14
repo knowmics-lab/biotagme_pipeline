@@ -14,7 +14,7 @@ object DisGenNetUtils {
     )
 
     val header_var_dis = Seq(
-        "snpID               as snp_id",
+        "snpId               as snp_id",
         "diseaseId           as disease_dgn_id",
         "lower(diseaseName)  as disease_name",
         "source",
@@ -92,9 +92,12 @@ object DisGenNetUtils {
             .distinct
 
         df_seq.foreach(df => df_indexing = df_indexing.union(df.select("disease_dgn_id", "disease_name")))
+        /*
         df_indexing.distinct.select(df_indexing.columns.map(c => col(c)) :+
             explode(build_synonyms(col("disease_name"))).as("other_name"):_*
         ).distinct
+        */
+        df_indexing.distinct.selectExpr("disease_dgn_id", "disease_name", "disease_name as other_name").distinct
     }
 
 

@@ -3,23 +3,24 @@ package Databases_Module.miRNA
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import Databases_Module.Drug.ChEBIUtils.read_tsv
 import org.apache.spark.sql.functions._
+import scala.collection.mutable
 
 object mirBaseUtils {
-    val header_mirna = Seq(
+    private[this] val header_mirna = Seq(
         "_c1         as miRNA_id",
         "lower(_c2)  as miRNA_name",
         "lower(_c3 ) as miRNA_old_name",
         "_c8         as is_dead"
     )
 
-    val header_mature = Seq(
+    private[this] val header_mature = Seq(
         "_c3        as miRNA_id",
         "lower(_c1) as miRNA_name",
         "lower(_c2) as miRNA_old_name",
         "_c7        as is_dead"
     )
 
-    val header_species = Seq(
+    private[this] val header_species = Seq(
         "_c0 as species_id",
         "_c1 as species_symbol",
         "_c3 as species_name"
@@ -29,7 +30,7 @@ object mirBaseUtils {
      * get_mirna function reads the either mirna.txt or mature.txt file and return a spark DataFrame containing only
      * selected species undead miRNA.
     **/
-    def get_mirBase(paths: Map[String, String], spark:SparkSession, sel_species: String, sel_file:Int):DataFrame = {
+    def get_mirBase(paths: mutable.Map[String, String], spark:SparkSession, sel_species: String, sel_file:Int):DataFrame = {
         import spark.implicits._
         val root_path  = paths("root_path")
 
@@ -46,7 +47,7 @@ object mirBaseUtils {
             .drop(colNames="species_symbol", "is_dead")
     }
 
-    def select_union(DatFr: DataFrame, spark:SparkSession): DataFrame = {
+    private [this] def select_union(DatFr: DataFrame, spark:SparkSession): DataFrame = {
         import spark.implicits._
         DatFr.selectExpr(DatFr.columns.filter(c => c != "miRNA_old_name") :+ "miRNA_name as other_name":_*)
              .union(DatFr.where(condition=$"miRNA_old_name" =!= "null"))

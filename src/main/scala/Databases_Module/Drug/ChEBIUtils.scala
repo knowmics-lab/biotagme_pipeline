@@ -15,7 +15,7 @@ object ChEBIUtils {
      * the specified ones are selected.
     **/
     def read_tsv(path:String, spark:SparkSession, req_drop:Boolean, columns:Seq[String], header:String = "true"): DataFrame = {
-        var DatFr = spark.read.format("csv")
+        val DatFr = spark.read.format("csv")
             .option("header", header)
             .option("sep", "\t")
             .option("inferSchema", header)

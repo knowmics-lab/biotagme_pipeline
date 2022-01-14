@@ -34,7 +34,8 @@ object AnnotationProcedure extends AnnotationTrait {
       new_abst.repartition(getNumPartition(new_abst, spark),$"PMID")
          .select($"PMID", concat($"title", lit("\n"), $"Abstract").as("Text"))
          .select($"PMID",
-              explode(sendAnnotationRequest(typedLit(parameters_map), $"Text", $"PMID").getItem("annotations")).as("An")
+              explode(sendAnnotationRequest(typedLit(parameters_map), $"Text", $"PMID").getItem("annotations")).
+              as("An")
          ).filter($"An.title".isNotNull)
          .select($"PMID",
               when_other($"An.spot",0).as("spot"),
@@ -78,10 +79,10 @@ object AnnotationProcedure extends AnnotationTrait {
           annotation_filtering.write.mode("append").parquet(parameters_map("DocumentsAnnotations_path") + "_filtered")
 
           // Update articles table adding the new pmid with title and abstract
-          val all_documents = spark.read.json(parameters_map("allDocuments_path") + "/*.json")
+          val all_documents = spark.read.json(parameters_map("allDocuments_path") + "/*.json").select($"pmid")
           val new_documents = spark.read.json(parameters_map("newDocuments_path") + "/*.json")
-          all_documents.union(new_documents).distinct
-             .write.mode("overwrite").json(parameters_map("allDocuments_path"))
+          new_documents.join(all_documents, Seq("pmid"), "leftanti").distinct
+             .write.mode("append").json(parameters_map("allDocuments_path"))
 
           fs.delete(new Path(parameters_map("newDocuments_path")), true)
       }

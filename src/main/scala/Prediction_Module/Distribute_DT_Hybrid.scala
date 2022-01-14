@@ -3,8 +3,8 @@ package Prediction_Module
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
+import scala.collection.mutable
 
-import scala.xml.{Elem, Node}
 
 /**
  * The aim of DT_Hybrid algorithm is to predict the goodness of the spot1-spot2 relationship through a bipartite
@@ -25,37 +25,16 @@ import scala.xml.{Elem, Node}
  *   6. the last selecting operation builds a DataFrame contains the biotagme scores for each ti-tj association
  **/
 object Distribute_DT_Hybrid {
-    def addTuple(key:String, value: Node):(String,String) =
-        key -> value.child(3).text.replaceAll("[\\s+|\n]","")
 
-    def get_dtHybrid_params(conf_xml:Elem): Map[String,String] = {
-        var dt_info: Map[String, String] = Map()
-        conf_xml.child.foreach(elem_0 =>
-            elem_0.label match {
-                case "dt_hybrid_parameters" =>
-                    elem_0.child.foreach(elem_1 => elem_1.label match {
-                        case "alpha" => dt_info = dt_info + addTuple("alpha", elem_1)
-                        case "top"   => dt_info = dt_info + addTuple("top", elem_1)
-                        case _       => null
-                    })
-                case "hdfs_paths" =>
-                    elem_0.child.foreach(elem_1 => elem_1.label match {
-                        case "w_matrix_path" => dt_info = dt_info + addTuple("w_matrix_path", elem_1)
-                        case "DocumentsAnnotations_path" => dt_info = dt_info + addTuple("DocumentsAnnotations_path", elem_1)
-                        case _ => null
-                    })
-                case _ => null
-            })
-        dt_info
-    }
-
-    def dt_hybrid_manager(spark: SparkSession, conf_xml:Elem): Unit = {
+    def dt_hybrid_manager(spark: SparkSession, conf_map: mutable.Map[String, Any]): Unit = {
         import spark.implicits._
-        val dt_hybrid_params  = get_dtHybrid_params(conf_xml)
-        val alpha: Double = dt_hybrid_params("alpha").toDouble
+
+        val w_matrix_paths   = conf_map("hdfs_paths").asInstanceOf[mutable.Map[String, String]]
+        val dt_hybrid_params = conf_map("dt_hybrid_parameters").asInstanceOf[mutable.Map[String, String]]
+        val alpha: Double    = dt_hybrid_params("alpha").toDouble
 
         //1.pmids_wids_df
-        val pmids_wids   = spark.read.parquet(dt_hybrid_params("DocumentsAnnotations_path") + "_filtered/*.parquet")
+        val pmids_wids   = spark.read.parquet(w_matrix_paths("DocumentsAnnotations_path") + "_filtered/*.parquet")
             .select($"pmid", $"wiki_id").persist()
 
         //2.pmids_1ONdeg_df
@@ -67,7 +46,7 @@ object Distribute_DT_Hybrid {
             .select($"wiki_id", (lit(1.0)/$"deg").as("1_on_degW"))
 
         //W_DataFrame
-        val top_wind = Window.orderBy($"wid1", desc("w")).partitionBy("wid1")
+        val norm_wind    = Window.orderBy("wid1").partitionBy("wid1")
         val w_DataFrame  = pmids_wids.withColumnRenamed("wiki_id", "wid1")
             .join(pmids_wids.withColumnRenamed("wiki_id", "wid2"), "pmid")
             .join(pmids_1ONdeg, "pmid")
@@ -75,11 +54,12 @@ object Distribute_DT_Hybrid {
             .join(broadcast(wid_1onDeg).select($"wiki_id".as("wid1"), pow($"1_on_degW",alpha).as("gamma(t1)")),"wid1")
             .join(broadcast(wid_1onDeg).select($"wiki_id".as("wid2"), pow($"1_on_degW",1-alpha).as("gamma(t2)")),"wid2")
             .select($"wid1", $"wid2", ($"gamma(pmid)" * $"gamma(t1)" * $"gamma(t2)").as("w"))
-            .withColumn("n_row", row_number().over(top_wind))
-            .where($"n_row" <= dt_hybrid_params("top").toInt).drop("n_row")
+            .withColumn("w_max", max($"w").over(norm_wind))
+            .select($"wid1", $"wid2", ($"w"/$"w_max").as("w_norm"))
+            .where($"wid1" =!= $"wid2").repartitionByRange(col("wid1"))
 
         //Saving DataFrame
-        w_DataFrame.write.mode("overwrite").parquet(dt_hybrid_params("w_matrix_path"))
+        w_DataFrame.write.mode("overwrite").parquet(w_matrix_paths("w_matrix_path"))
         pmids_wids.unpersist()
     }
 }

@@ -33,9 +33,9 @@ object HGNCUtils {
 
     val column_for_indexing: Seq[String] = Seq(
         "gene_symbol",
-        "gene_name"
-        //"alias_symbol",
-        //"alias_name"
+        "gene_name",
+        "alias_symbol",
+        "alias_name"
         //"prev_symbol",
         //"prev_name"
     )
@@ -68,10 +68,8 @@ object HGNCUtils {
                 .where(col("other_name").isNotNull)
                 .withColumn("other_name", explode(split(col("other_name"), "\\|")))
                 .distinct()
-
             hgnc_indexing = if(hgnc_indexing == null) hgnc_df_portion else hgnc_indexing.union(hgnc_df_portion)
         })
-
         hgnc_indexing.distinct
     }
 
@@ -98,7 +96,6 @@ object HGNCUtils {
 
             hgnc_relationships = if(hgnc_relationships == null) tmp.distinct else hgnc_relationships.union(tmp.distinct)
         })
-
         hgnc_relationships
     }
 

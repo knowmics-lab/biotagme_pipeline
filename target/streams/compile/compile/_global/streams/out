@@ -1,7 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m/home/antonio/Scrivania/BioTagME_final/src/main/scala/Networks/BioTagMEMain.scala:55:42: illegal start of simple expression[0m
-[0m[[0m[31merror[0m] [0m[0m                .groupBy("IDX", col_name,).agg(collect_set($"wiki_id").as("wiki_ids"))[0m
-[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/antonio/Scrivania/BioTagME_final/src/main/scala/Networks/BioTagMEMain.scala:57:9: ')' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m        })[0m
-[0m[[0m[31merror[0m] [0m[0m        ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[33mwarn[0m] [0m[0mone feature warning; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
